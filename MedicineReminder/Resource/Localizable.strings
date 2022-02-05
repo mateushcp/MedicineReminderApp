@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  MedicineReminder
+
+  Created by Mateus Henrique Coelho de Paulo on 04/02/22.
+  
+*/
+
+// MARK: Intro Screen
+"Intro_title" = "Remédio daHora";
+"Check_recipes" = "CONSULTAR RECEITAS";
+"Include_recipes" = "INCLUIR NOVA RECEITA";
+"Detail_Message" = "O jeito fácil de deixar sua saúde em dia";
+"String_Color" = "saúde";
+
+// MARK: NewPrescription Screen
+"New_Title" = "NOVA RECEITA";

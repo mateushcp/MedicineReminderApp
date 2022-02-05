@@ -8,22 +8,64 @@
 
 /* Begin PBXBuildFile section */
 		A9B17BF827ACA37000D2C838 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17BF727ACA37000D2C838 /* AppDelegate.swift */; };
-		A9B17BFA27ACA37000D2C838 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17BF927ACA37000D2C838 /* SceneDelegate.swift */; };
-		A9B17BFC27ACA37000D2C838 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17BFB27ACA37000D2C838 /* ContentView.swift */; };
 		A9B17BFE27ACA37200D2C838 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9B17BFD27ACA37200D2C838 /* Assets.xcassets */; };
-		A9B17C0127ACA37200D2C838 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9B17C0027ACA37200D2C838 /* Preview Assets.xcassets */; };
-		A9B17C0427ACA37200D2C838 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9B17C0227ACA37200D2C838 /* LaunchScreen.storyboard */; };
+		A9B17C1127ACAACA00D2C838 /* IntroScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17C1027ACAACA00D2C838 /* IntroScreenView.swift */; };
+		A9B17C1427ACAE0300D2C838 /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17C1327ACAE0300D2C838 /* UIImage+Ext.swift */; };
+		A9B17C1627ACAE8A00D2C838 /* IntroScreenViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17C1527ACAE8A00D2C838 /* IntroScreenViewProtocol.swift */; };
+		A9B17C1927ACAF4500D2C838 /* IntroScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17C1827ACAF4500D2C838 /* IntroScreenViewController.swift */; };
+		A9B17C1B27ACAFDA00D2C838 /* IntroScreenViewControlerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17C1A27ACAFDA00D2C838 /* IntroScreenViewControlerProtocol.swift */; };
+		A9B17C1D27ACB0A600D2C838 /* IntroScreenFlowDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17C1C27ACB0A600D2C838 /* IntroScreenFlowDelegate.swift */; };
+		A9B17C2027ACB44400D2C838 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17C1F27ACB44400D2C838 /* ViewControllerFactory.swift */; };
+		A9B17C2227ACB60A00D2C838 /* ViewControllerFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17C2127ACB60A00D2C838 /* ViewControllerFactoryProtocol.swift */; };
+		A9B17C2727AD449C00D2C838 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17C2627AD449C00D2C838 /* UIView+Ext.swift */; };
+		A9B17C2927AD4BC700D2C838 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A9B17C2827AD4BC700D2C838 /* Localizable.strings */; };
+		A9B17C2B27AD4D3F00D2C838 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17C2A27AD4D3F00D2C838 /* String+Ext.swift */; };
+		A9B17C2F27AD54BE00D2C838 /* UIImage+ImageSources.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17C2E27AD54BE00D2C838 /* UIImage+ImageSources.swift */; };
+		A9B17C5227AD5D7A00D2C838 /* Metrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17C5127AD5D7A00D2C838 /* Metrics.swift */; };
+		A9B17C5427AD851000D2C838 /* UIColor+Ext .swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17C5327AD851000D2C838 /* UIColor+Ext .swift */; };
+		A9B17C5627AD853D00D2C838 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17C5527AD853D00D2C838 /* Colors.swift */; };
+		A9B17C5827ADC81800D2C838 /* MedicineReminderFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17C5727ADC81800D2C838 /* MedicineReminderFlowController.swift */; };
+		A9B17C5D27ADE23100D2C838 /* NewPrescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17C5C27ADE23100D2C838 /* NewPrescriptionViewController.swift */; };
+		A9B17C5F27ADE24900D2C838 /* NewPrescriptionViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17C5E27ADE24900D2C838 /* NewPrescriptionViewControllerProtocol.swift */; };
+		A9B17C6127ADE26400D2C838 /* NewPrescriptionFlowDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17C6027ADE26400D2C838 /* NewPrescriptionFlowDelegate.swift */; };
+		A9B17C6327ADE27500D2C838 /* NewPrescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17C6227ADE27500D2C838 /* NewPrescriptionView.swift */; };
+		A9B17C6527ADE28200D2C838 /* NewPrescriptionViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17C6427ADE28200D2C838 /* NewPrescriptionViewProtocol.swift */; };
+		A9B17C6727ADE29000D2C838 /* NewPrescriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17C6627ADE29000D2C838 /* NewPrescriptionViewModel.swift */; };
+		A9B17C6927ADE2AA00D2C838 /* NewPrescriptionViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17C6827ADE2AA00D2C838 /* NewPrescriptionViewModelProtocol.swift */; };
+		A9B17C6C27ADE53F00D2C838 /* ViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17C6B27ADE53F00D2C838 /* ViewModelFactory.swift */; };
+		A9B17C6E27ADE54700D2C838 /* ViewModelFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17C6D27ADE54700D2C838 /* ViewModelFactoryProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A9B17BF427ACA37000D2C838 /* MedicineReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedicineReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9B17BF727ACA37000D2C838 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A9B17BF927ACA37000D2C838 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A9B17BFB27ACA37000D2C838 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A9B17BFD27ACA37200D2C838 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A9B17C0027ACA37200D2C838 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		A9B17C0327ACA37200D2C838 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A9B17C0527ACA37200D2C838 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A9B17C1027ACAACA00D2C838 /* IntroScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroScreenView.swift; sourceTree = "<group>"; };
+		A9B17C1327ACAE0300D2C838 /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
+		A9B17C1527ACAE8A00D2C838 /* IntroScreenViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroScreenViewProtocol.swift; sourceTree = "<group>"; };
+		A9B17C1827ACAF4500D2C838 /* IntroScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroScreenViewController.swift; sourceTree = "<group>"; };
+		A9B17C1A27ACAFDA00D2C838 /* IntroScreenViewControlerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroScreenViewControlerProtocol.swift; sourceTree = "<group>"; };
+		A9B17C1C27ACB0A600D2C838 /* IntroScreenFlowDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroScreenFlowDelegate.swift; sourceTree = "<group>"; };
+		A9B17C1F27ACB44400D2C838 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
+		A9B17C2127ACB60A00D2C838 /* ViewControllerFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactoryProtocol.swift; sourceTree = "<group>"; };
+		A9B17C2627AD449C00D2C838 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		A9B17C2827AD4BC700D2C838 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		A9B17C2A27AD4D3F00D2C838 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		A9B17C2E27AD54BE00D2C838 /* UIImage+ImageSources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+ImageSources.swift"; sourceTree = "<group>"; };
+		A9B17C5127AD5D7A00D2C838 /* Metrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metrics.swift; sourceTree = "<group>"; };
+		A9B17C5327AD851000D2C838 /* UIColor+Ext .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext .swift"; sourceTree = "<group>"; };
+		A9B17C5527AD853D00D2C838 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		A9B17C5727ADC81800D2C838 /* MedicineReminderFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineReminderFlowController.swift; sourceTree = "<group>"; };
+		A9B17C5C27ADE23100D2C838 /* NewPrescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPrescriptionViewController.swift; sourceTree = "<group>"; };
+		A9B17C5E27ADE24900D2C838 /* NewPrescriptionViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPrescriptionViewControllerProtocol.swift; sourceTree = "<group>"; };
+		A9B17C6027ADE26400D2C838 /* NewPrescriptionFlowDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPrescriptionFlowDelegate.swift; sourceTree = "<group>"; };
+		A9B17C6227ADE27500D2C838 /* NewPrescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPrescriptionView.swift; sourceTree = "<group>"; };
+		A9B17C6427ADE28200D2C838 /* NewPrescriptionViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPrescriptionViewProtocol.swift; sourceTree = "<group>"; };
+		A9B17C6627ADE29000D2C838 /* NewPrescriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPrescriptionViewModel.swift; sourceTree = "<group>"; };
+		A9B17C6827ADE2AA00D2C838 /* NewPrescriptionViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPrescriptionViewModelProtocol.swift; sourceTree = "<group>"; };
+		A9B17C6B27ADE53F00D2C838 /* ViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelFactory.swift; sourceTree = "<group>"; };
+		A9B17C6D27ADE54700D2C838 /* ViewModelFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelFactoryProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,23 +98,140 @@
 		A9B17BF627ACA37000D2C838 /* MedicineReminder */ = {
 			isa = PBXGroup;
 			children = (
-				A9B17BF727ACA37000D2C838 /* AppDelegate.swift */,
-				A9B17BF927ACA37000D2C838 /* SceneDelegate.swift */,
-				A9B17BFB27ACA37000D2C838 /* ContentView.swift */,
-				A9B17BFD27ACA37200D2C838 /* Assets.xcassets */,
-				A9B17C0227ACA37200D2C838 /* LaunchScreen.storyboard */,
+				A9B17C0C27ACA80700D2C838 /* Resource */,
+				A9B17C0B27ACA7FF00D2C838 /* Source */,
 				A9B17C0527ACA37200D2C838 /* Info.plist */,
-				A9B17BFF27ACA37200D2C838 /* Preview Content */,
 			);
 			path = MedicineReminder;
 			sourceTree = "<group>";
 		};
-		A9B17BFF27ACA37200D2C838 /* Preview Content */ = {
+		A9B17C0B27ACA7FF00D2C838 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				A9B17C0027ACA37200D2C838 /* Preview Assets.xcassets */,
+				A9B17C5027AD5D7000D2C838 /* Commons */,
+				A9B17C1E27ACB43000D2C838 /* DependencyInjection */,
+				A9B17C1227ACADEB00D2C838 /* Extensions */,
+				A9B17C0E27ACA86500D2C838 /* Feature */,
+				A9B17BF727ACA37000D2C838 /* AppDelegate.swift */,
+				A9B17C5727ADC81800D2C838 /* MedicineReminderFlowController.swift */,
 			);
-			path = "Preview Content";
+			path = Source;
+			sourceTree = "<group>";
+		};
+		A9B17C0C27ACA80700D2C838 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				A9B17BFD27ACA37200D2C838 /* Assets.xcassets */,
+				A9B17C2827AD4BC700D2C838 /* Localizable.strings */,
+				A9B17C2E27AD54BE00D2C838 /* UIImage+ImageSources.swift */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		A9B17C0E27ACA86500D2C838 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				A9B17C5927ADE20900D2C838 /* NewPrescription */,
+				A9B17C0F27ACA87000D2C838 /* IntroScreen */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		A9B17C0F27ACA87000D2C838 /* IntroScreen */ = {
+			isa = PBXGroup;
+			children = (
+				A9B17C1C27ACB0A600D2C838 /* IntroScreenFlowDelegate.swift */,
+				A9B17C1827ACAF4500D2C838 /* IntroScreenViewController.swift */,
+				A9B17C1A27ACAFDA00D2C838 /* IntroScreenViewControlerProtocol.swift */,
+				A9B17C1727ACAF3200D2C838 /* View */,
+			);
+			path = IntroScreen;
+			sourceTree = "<group>";
+		};
+		A9B17C1227ACADEB00D2C838 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A9B17C1327ACAE0300D2C838 /* UIImage+Ext.swift */,
+				A9B17C2627AD449C00D2C838 /* UIView+Ext.swift */,
+				A9B17C2A27AD4D3F00D2C838 /* String+Ext.swift */,
+				A9B17C5327AD851000D2C838 /* UIColor+Ext .swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A9B17C1727ACAF3200D2C838 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A9B17C1527ACAE8A00D2C838 /* IntroScreenViewProtocol.swift */,
+				A9B17C1027ACAACA00D2C838 /* IntroScreenView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A9B17C1E27ACB43000D2C838 /* DependencyInjection */ = {
+			isa = PBXGroup;
+			children = (
+				A9B17C6A27ADE52B00D2C838 /* ViewModel */,
+				A9B17C2527AD2B4600D2C838 /* ViewController */,
+			);
+			path = DependencyInjection;
+			sourceTree = "<group>";
+		};
+		A9B17C2527AD2B4600D2C838 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A9B17C2127ACB60A00D2C838 /* ViewControllerFactoryProtocol.swift */,
+				A9B17C1F27ACB44400D2C838 /* ViewControllerFactory.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A9B17C5027AD5D7000D2C838 /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				A9B17C5127AD5D7A00D2C838 /* Metrics.swift */,
+				A9B17C5527AD853D00D2C838 /* Colors.swift */,
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
+		A9B17C5927ADE20900D2C838 /* NewPrescription */ = {
+			isa = PBXGroup;
+			children = (
+				A9B17C5B27ADE21C00D2C838 /* ViewModel */,
+				A9B17C5A27ADE21700D2C838 /* View */,
+				A9B17C5C27ADE23100D2C838 /* NewPrescriptionViewController.swift */,
+				A9B17C5E27ADE24900D2C838 /* NewPrescriptionViewControllerProtocol.swift */,
+				A9B17C6027ADE26400D2C838 /* NewPrescriptionFlowDelegate.swift */,
+			);
+			path = NewPrescription;
+			sourceTree = "<group>";
+		};
+		A9B17C5A27ADE21700D2C838 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A9B17C6227ADE27500D2C838 /* NewPrescriptionView.swift */,
+				A9B17C6427ADE28200D2C838 /* NewPrescriptionViewProtocol.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A9B17C5B27ADE21C00D2C838 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A9B17C6627ADE29000D2C838 /* NewPrescriptionViewModel.swift */,
+				A9B17C6827ADE2AA00D2C838 /* NewPrescriptionViewModelProtocol.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A9B17C6A27ADE52B00D2C838 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A9B17C6B27ADE53F00D2C838 /* ViewModelFactory.swift */,
+				A9B17C6D27ADE54700D2C838 /* ViewModelFactoryProtocol.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,9 +291,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9B17C0427ACA37200D2C838 /* LaunchScreen.storyboard in Resources */,
-				A9B17C0127ACA37200D2C838 /* Preview Assets.xcassets in Resources */,
 				A9B17BFE27ACA37200D2C838 /* Assets.xcassets in Resources */,
+				A9B17C2927AD4BC700D2C838 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,24 +303,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9B17C1D27ACB0A600D2C838 /* IntroScreenFlowDelegate.swift in Sources */,
+				A9B17C5D27ADE23100D2C838 /* NewPrescriptionViewController.swift in Sources */,
+				A9B17C2727AD449C00D2C838 /* UIView+Ext.swift in Sources */,
+				A9B17C6327ADE27500D2C838 /* NewPrescriptionView.swift in Sources */,
+				A9B17C1B27ACAFDA00D2C838 /* IntroScreenViewControlerProtocol.swift in Sources */,
+				A9B17C6727ADE29000D2C838 /* NewPrescriptionViewModel.swift in Sources */,
+				A9B17C1627ACAE8A00D2C838 /* IntroScreenViewProtocol.swift in Sources */,
+				A9B17C6927ADE2AA00D2C838 /* NewPrescriptionViewModelProtocol.swift in Sources */,
+				A9B17C5427AD851000D2C838 /* UIColor+Ext .swift in Sources */,
+				A9B17C2027ACB44400D2C838 /* ViewControllerFactory.swift in Sources */,
+				A9B17C1127ACAACA00D2C838 /* IntroScreenView.swift in Sources */,
+				A9B17C2B27AD4D3F00D2C838 /* String+Ext.swift in Sources */,
+				A9B17C6527ADE28200D2C838 /* NewPrescriptionViewProtocol.swift in Sources */,
+				A9B17C2F27AD54BE00D2C838 /* UIImage+ImageSources.swift in Sources */,
+				A9B17C6E27ADE54700D2C838 /* ViewModelFactoryProtocol.swift in Sources */,
+				A9B17C5627AD853D00D2C838 /* Colors.swift in Sources */,
+				A9B17C2227ACB60A00D2C838 /* ViewControllerFactoryProtocol.swift in Sources */,
+				A9B17C1427ACAE0300D2C838 /* UIImage+Ext.swift in Sources */,
+				A9B17C5F27ADE24900D2C838 /* NewPrescriptionViewControllerProtocol.swift in Sources */,
 				A9B17BF827ACA37000D2C838 /* AppDelegate.swift in Sources */,
-				A9B17BFA27ACA37000D2C838 /* SceneDelegate.swift in Sources */,
-				A9B17BFC27ACA37000D2C838 /* ContentView.swift in Sources */,
+				A9B17C5227AD5D7A00D2C838 /* Metrics.swift in Sources */,
+				A9B17C6127ADE26400D2C838 /* NewPrescriptionFlowDelegate.swift in Sources */,
+				A9B17C6C27ADE53F00D2C838 /* ViewModelFactory.swift in Sources */,
+				A9B17C1927ACAF4500D2C838 /* IntroScreenViewController.swift in Sources */,
+				A9B17C5827ADC81800D2C838 /* MedicineReminderFlowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		A9B17C0227ACA37200D2C838 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A9B17C0327ACA37200D2C838 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		A9B17C0627ACA37200D2C838 /* Debug */ = {
@@ -287,7 +456,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"MedicineReminder/Preview Content\"";
+				DEVELOPMENT_TEAM = WNNJ4KX4AX;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MedicineReminder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -307,7 +476,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"MedicineReminder/Preview Content\"";
+				DEVELOPMENT_TEAM = WNNJ4KX4AX;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = MedicineReminder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
