@@ -9,4 +9,5 @@ import Foundation
 
 protocol ViewModelFactoryProtocol {
     func makeNewPrescriptionViewModel() -> NewPrescriptionViewModelProtocol
+    func makeCheckPrescriptionViewModel() -> CheckPrescriptionViewModelProtocol
 }

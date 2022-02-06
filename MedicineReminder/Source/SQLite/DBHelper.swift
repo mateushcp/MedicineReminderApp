@@ -70,7 +70,26 @@ class DBHelper {
             return db
         }
     }
-      
+    
+    func read() -> [Prescription] {
+        let queryStatementString = "SELECT * FROM prescription;"
+        var queryStatement: OpaquePointer? = nil
+        var psns : [Prescription] = []
+        if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
+            while sqlite3_step(queryStatement) == SQLITE_ROW {
+                let id = sqlite3_column_int(queryStatement, 0)
+                let name = String(describing: String(cString: sqlite3_column_text(queryStatement, 1)))
+                let timeToTime = String(describing: String(cString: sqlite3_column_text(queryStatement, 2)))
+                psns.append(Prescription(name: name, timeToTime: timeToTime, id: Int(id)))
+                print("Query Result:")
+                print("\(id) | \(name) | \(timeToTime)")
+            }
+        } else {
+            print("SELECT statement could not be prepared")
+        }
+        sqlite3_finalize(queryStatement)
+        return psns
+    }
       func deleteByID(id:Int) {
           let deleteStatementStirng = "DELETE FROM prescription WHERE Id = ?;"
           var deleteStatement: OpaquePointer? = nil

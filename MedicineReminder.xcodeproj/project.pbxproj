@@ -13,6 +13,12 @@
 		A92EE05E27AF762600B7DD59 /* CheckPrescriptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92EE05D27AF762600B7DD59 /* CheckPrescriptionsView.swift */; };
 		A92EE06327B010B200B7DD59 /* CheckPrescriptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92EE06227B010B200B7DD59 /* CheckPrescriptionsViewController.swift */; };
 		A92EE06527B010E000B7DD59 /* CheckPrescriptionsViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92EE06427B010E000B7DD59 /* CheckPrescriptionsViewProtocol.swift */; };
+		A92EE06727B0177800B7DD59 /* CheckPrescriptionsViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92EE06627B0177800B7DD59 /* CheckPrescriptionsViewControllerProtocol.swift */; };
+		A92EE06927B017CB00B7DD59 /* CheckPrescriptionFlowDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92EE06827B017CB00B7DD59 /* CheckPrescriptionFlowDelegate.swift */; };
+		A92EE06B27B018E700B7DD59 /* CheckPrescriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92EE06A27B018E700B7DD59 /* CheckPrescriptionViewModel.swift */; };
+		A92EE06D27B018FA00B7DD59 /* CheckPrescriptionViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92EE06C27B018FA00B7DD59 /* CheckPrescriptionViewModelProtocol.swift */; };
+		A92EE07027B01D4A00B7DD59 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92EE06F27B01D4A00B7DD59 /* CustomCell.swift */; };
+		A92EE07427B0571600B7DD59 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92EE07327B0571600B7DD59 /* PaddingLabel.swift */; };
 		A9B17BF827ACA37000D2C838 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17BF727ACA37000D2C838 /* AppDelegate.swift */; };
 		A9B17BFE27ACA37200D2C838 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9B17BFD27ACA37200D2C838 /* Assets.xcassets */; };
 		A9B17C1127ACAACA00D2C838 /* IntroScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17C1027ACAACA00D2C838 /* IntroScreenView.swift */; };
@@ -49,6 +55,12 @@
 		A92EE05D27AF762600B7DD59 /* CheckPrescriptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckPrescriptionsView.swift; sourceTree = "<group>"; };
 		A92EE06227B010B200B7DD59 /* CheckPrescriptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckPrescriptionsViewController.swift; sourceTree = "<group>"; };
 		A92EE06427B010E000B7DD59 /* CheckPrescriptionsViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckPrescriptionsViewProtocol.swift; sourceTree = "<group>"; };
+		A92EE06627B0177800B7DD59 /* CheckPrescriptionsViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckPrescriptionsViewControllerProtocol.swift; sourceTree = "<group>"; };
+		A92EE06827B017CB00B7DD59 /* CheckPrescriptionFlowDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckPrescriptionFlowDelegate.swift; sourceTree = "<group>"; };
+		A92EE06A27B018E700B7DD59 /* CheckPrescriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckPrescriptionViewModel.swift; sourceTree = "<group>"; };
+		A92EE06C27B018FA00B7DD59 /* CheckPrescriptionViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckPrescriptionViewModelProtocol.swift; sourceTree = "<group>"; };
+		A92EE06F27B01D4A00B7DD59 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		A92EE07327B0571600B7DD59 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		A9B17BF427ACA37000D2C838 /* MedicineReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedicineReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9B17BF727ACA37000D2C838 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9B17BFD27ACA37200D2C838 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -110,9 +122,12 @@
 		A92EE05A27AF75F400B7DD59 /* CheckPrescriptions */ = {
 			isa = PBXGroup;
 			children = (
+				A92EE06E27B01D3E00B7DD59 /* CustomCell */,
 				A92EE05C27AF760D00B7DD59 /* ViewModel */,
 				A92EE05B27AF760600B7DD59 /* View */,
 				A92EE06227B010B200B7DD59 /* CheckPrescriptionsViewController.swift */,
+				A92EE06627B0177800B7DD59 /* CheckPrescriptionsViewControllerProtocol.swift */,
+				A92EE06827B017CB00B7DD59 /* CheckPrescriptionFlowDelegate.swift */,
 			);
 			path = CheckPrescriptions;
 			sourceTree = "<group>";
@@ -129,8 +144,18 @@
 		A92EE05C27AF760D00B7DD59 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				A92EE06A27B018E700B7DD59 /* CheckPrescriptionViewModel.swift */,
+				A92EE06C27B018FA00B7DD59 /* CheckPrescriptionViewModelProtocol.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A92EE06E27B01D3E00B7DD59 /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				A92EE06F27B01D4A00B7DD59 /* CustomCell.swift */,
+			);
+			path = CustomCell;
 			sourceTree = "<group>";
 		};
 		A9B17BEB27ACA37000D2C838 = {
@@ -213,6 +238,7 @@
 				A9B17C2A27AD4D3F00D2C838 /* String+Ext.swift */,
 				A9B17C5327AD851000D2C838 /* UIColor+Ext .swift */,
 				A92EE05027AF49E700B7DD59 /* UITextField+Ext.swift */,
+				A92EE07327B0571600B7DD59 /* PaddingLabel.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -364,6 +390,7 @@
 				A9B17C1D27ACB0A600D2C838 /* IntroScreenFlowDelegate.swift in Sources */,
 				A92EE05E27AF762600B7DD59 /* CheckPrescriptionsView.swift in Sources */,
 				A9B17C5D27ADE23100D2C838 /* NewPrescriptionViewController.swift in Sources */,
+				A92EE06927B017CB00B7DD59 /* CheckPrescriptionFlowDelegate.swift in Sources */,
 				A9B17C2727AD449C00D2C838 /* UIView+Ext.swift in Sources */,
 				A92EE05727AF6CC000B7DD59 /* Prescription.swift in Sources */,
 				A9B17C6327ADE27500D2C838 /* NewPrescriptionView.swift in Sources */,
@@ -374,6 +401,7 @@
 				A9B17C5427AD851000D2C838 /* UIColor+Ext .swift in Sources */,
 				A9B17C2027ACB44400D2C838 /* ViewControllerFactory.swift in Sources */,
 				A92EE06527B010E000B7DD59 /* CheckPrescriptionsViewProtocol.swift in Sources */,
+				A92EE06727B0177800B7DD59 /* CheckPrescriptionsViewControllerProtocol.swift in Sources */,
 				A9B17C1127ACAACA00D2C838 /* IntroScreenView.swift in Sources */,
 				A9B17C2B27AD4D3F00D2C838 /* String+Ext.swift in Sources */,
 				A9B17C6527ADE28200D2C838 /* NewPrescriptionViewProtocol.swift in Sources */,
@@ -381,10 +409,13 @@
 				A9B17C2F27AD54BE00D2C838 /* UIImage+ImageSources.swift in Sources */,
 				A9B17C6E27ADE54700D2C838 /* ViewModelFactoryProtocol.swift in Sources */,
 				A9B17C5627AD853D00D2C838 /* Colors.swift in Sources */,
+				A92EE07027B01D4A00B7DD59 /* CustomCell.swift in Sources */,
 				A9B17C2227ACB60A00D2C838 /* ViewControllerFactoryProtocol.swift in Sources */,
 				A9B17C1427ACAE0300D2C838 /* UIImage+Ext.swift in Sources */,
+				A92EE07427B0571600B7DD59 /* PaddingLabel.swift in Sources */,
 				A9B17C5F27ADE24900D2C838 /* NewPrescriptionViewControllerProtocol.swift in Sources */,
 				A92EE05127AF49E700B7DD59 /* UITextField+Ext.swift in Sources */,
+				A92EE06B27B018E700B7DD59 /* CheckPrescriptionViewModel.swift in Sources */,
 				A92EE06327B010B200B7DD59 /* CheckPrescriptionsViewController.swift in Sources */,
 				A9B17BF827ACA37000D2C838 /* AppDelegate.swift in Sources */,
 				A9B17C5227AD5D7A00D2C838 /* Metrics.swift in Sources */,
@@ -392,6 +423,7 @@
 				A9B17C6C27ADE53F00D2C838 /* ViewModelFactory.swift in Sources */,
 				A9B17C1927ACAF4500D2C838 /* IntroScreenViewController.swift in Sources */,
 				A9B17C5827ADC81800D2C838 /* MedicineReminderFlowController.swift in Sources */,
+				A92EE06D27B018FA00B7DD59 /* CheckPrescriptionViewModelProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -28,4 +28,12 @@ final class ViewControllerFactory: ViewControllerFactoryProtocol {
         
         return viewController
     }
+    
+    func makeCheckPrescriptionsViewController(delegate: CheckPrescriptionFlowDelegate) -> CheckPrescriptionsViewControllerProtocol {
+        let contentView = CheckPrescriptionsView()
+        let viewModel = viewModelFactory.makeCheckPrescriptionViewModel()
+        let viewController = CheckPrescriptionsViewController(delegate: delegate, viewModel: viewModel, contentView: contentView)
+        
+        return viewController
+    }
 }

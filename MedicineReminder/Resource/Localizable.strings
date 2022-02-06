@@ -22,3 +22,6 @@
 "Name_Holder" = "  Nome do Remédio";
 "Time_Holder" = "Selecione";
 "Include_Button" = "Adicionar";
+
+// MARK: CheckPrescription Screen
+"Check_Title" = "RECEITAS CADASTRADAS";

@@ -36,13 +36,14 @@ class MedicineReminderFlowController {
 
 extension MedicineReminderFlowController: IntroScreenFlowDelegate {
     func goToCheckPrescription() {
-        self.navigationController?.pushViewController(CheckPrescriptionsViewController(), animated: true)
+        let controller = viewControllerFactory.makeCheckPrescriptionsViewController(delegate: self)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     func goToNewPrescription() {
         let controller = viewControllerFactory.makeNewPrescriptionViewController(delegate: self)
         self.navigationController?.pushViewController(controller, animated: true)
-
+        
     }
 }
 
@@ -50,5 +51,9 @@ extension MedicineReminderFlowController: NewPrescriptionFlowDelegate {
     func goToHome() {
         self.navigationController?.popViewController(animated: true)
     }
+    
+}
+
+extension MedicineReminderFlowController: CheckPrescriptionFlowDelegate {
     
 }
