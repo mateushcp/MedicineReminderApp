@@ -28,7 +28,9 @@ public enum Metrics {
         public static let buttonTitle: CGFloat = 20
         
         public static let fieldName: CGFloat = 48
-                
+        
+        public static let expand: CGFloat = 110
+
         public static let iconMenu: CGFloat = 400
         public static let icon: CGFloat = 24
     }

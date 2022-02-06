@@ -19,6 +19,7 @@
 "Name_Text" = "Digite o nome do remédio, esse nome irá aparecer quando te enviarmos o lembrete";
 "Time_Text" = "De quanto em quanto tempo iremos te avisar?";
 "Tip_text" = "Nosso app vai te avisar qual o MedicamentoDaHora, na hora certa.";
+"Name_Text" = "Nome:";
 "Name_Holder" = "  Nome do Remédio";
 "Time_Holder" = "Selecione";
 "Include_Button" = "Adicionar";
@@ -26,5 +27,6 @@
 // MARK: CheckPrescription Screen
 "Check_Title" = "RECEITAS CADASTRADAS";
 "Check_Text" = "Confira as receitas cadastradas.
-Você pode remover uma receita para que as notificaçoes nao sejam mais enviadas, basta clicar na receita e depois no botão deletar";
+Você pode remover uma receita para que as notificaçoes nao sejam mais enviadas, basta clicar na receita e Remover lembrete";
 "Recomend_Text" = "AVALIE NA LOJA";
+"Delete_Button" = "Remover lembrete";

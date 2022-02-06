@@ -19,7 +19,7 @@ class CheckPrescriptionsView: UIView, CheckPrescriptionsViewProtocol {
         variable.textColor = Colors.appTheme
         variable.font = UIFont(name: "ArialNarrow", size: Metrics.Spacing.huge)
         variable.font = UIFont.boldSystemFont(ofSize: Metrics.Spacing.medium)
-        variable.text = "Check_Text".localized
+        variable.attributedText = "Check_Text".localized.attributedStringWithColor(["Remover lembrete"], color: Colors.red)
         variable.numberOfLines = zeroRawValue
         variable.textAlignment = NSTextAlignment.center
         variable.translatesAutoresizingMaskIntoConstraints = false
@@ -37,6 +37,8 @@ class CheckPrescriptionsView: UIView, CheckPrescriptionsViewProtocol {
     }()
     
     private let zeroRawValue = 0
+    var selectedIndex: IndexPath = IndexPath(row: 0, section: 0)
+    
     // MARK: - setup
     
     init() {
@@ -61,7 +63,6 @@ class CheckPrescriptionsView: UIView, CheckPrescriptionsViewProtocol {
         tableView.topAnchor.constraint(equalTo: topAnchor, constant: Metrics.Spacing.large).isActive = true
         tableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.Spacing.medium).isActive = true
         tableView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: descriptionText.topAnchor).isActive = true
         
         descriptionText.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: Metrics.Spacing.medium).isActive = true
         descriptionText.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.Spacing.large).isActive = true
@@ -89,10 +90,24 @@ extension CheckPrescriptionsView: UITableViewDelegate, UITableViewDataSource {
         cell.nameField.text = "\(prescriptions[indexPath.row].name)"
         cell.timeToTimeField.text = "\(prescriptions[indexPath.row].timeToTime)"
         
+        cell.selectionStyle = .none
+        cell.animate()
+        
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedIndex = indexPath
+        tableView.beginUpdates()
+        tableView.reloadRows(at: [selectedIndex], with: .none)
+        tableView.endUpdates()
+        
+    }
+    
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if selectedIndex == indexPath {
+            return Metrics.Spacing.expand
+        }
         return Metrics.Spacing.greater
     }
     
