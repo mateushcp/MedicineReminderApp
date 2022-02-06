@@ -8,21 +8,29 @@
 import Foundation
 import UIKit
 
-class CheckPrescriptionsViewController: UIViewController {
-    var personTableView = UITableView()
-    var prescriptions:[Prescription] = []
-    var db:DBHelper = DBHelper()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+class CheckPrescriptionsView: UIView, CheckPrescriptionsViewProtocol {
+
+        // MARK: - variables
+        // MARK: - setup
         
-        view.bindFrameToSuperviewBounds()
-        view.backgroundColor = .white
-        prescriptions = db.read()
+        init() {
+            super.init(frame: .zero)
+            setupUI()
+        }
         
-        self.navigationController?.isNavigationBarHidden = false
+        required init?(coder: NSCoder) {
+            fatalError("init error, not implemented")
+        }
+        // MARK: - private functions
+        
+        private func setupUI() {
+
+            
+            setupConstraints()
+        }
+        private func setupConstraints() {
+           
+            
+        }
 
     }
-    
-    
-}

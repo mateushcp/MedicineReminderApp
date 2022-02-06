@@ -11,7 +11,7 @@ struct Prescription {
     
     var name: String = ""
     var timeToTime: String = ""
-    var id: Int = 0
+    var id: Int? = 0
     
     init(name : String , timeToTime : String ,id:Int) {
             self.name = name
