@@ -8,8 +8,15 @@
 import Foundation
 
 class ViewModelFactory: ViewModelFactoryProtocol {
+    func makeCheckPrescriptionViewModel() -> CheckPrescriptionViewModelProtocol {
+        let viewModel = CheckPrescriptionViewModel()
+        
+        return viewModel
+    }
+    
     func makeNewPrescriptionViewModel() -> NewPrescriptionViewModelProtocol {
         let viewModel = NewPrescriptionViewModel()
+        
         return viewModel
     }
 }

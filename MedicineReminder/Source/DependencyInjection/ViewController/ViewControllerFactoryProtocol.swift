@@ -10,4 +10,5 @@ import Foundation
 protocol ViewControllerFactoryProtocol: AnyObject {
     func makeIntroScreenViewController(delegate: IntroScreenFlowDelegate) -> IntroScreenViewControllerProtocol
     func makeNewPrescriptionViewController(delegate: NewPrescriptionFlowDelegate) -> NewPrescriptionViewControllerProtocol
+    func makeCheckPrescriptionsViewController(delegate: CheckPrescriptionFlowDelegate) -> CheckPrescriptionsViewControllerProtocol
 }

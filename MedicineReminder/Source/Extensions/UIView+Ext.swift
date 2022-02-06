@@ -44,4 +44,24 @@ extension UIView {
             return self
         }
     }
+    
+    func applyGradient(isVertical: Bool, colorArray: [UIColor]) {
+        layer.sublayers?.filter({ $0 is CAGradientLayer }).forEach({ $0.removeFromSuperlayer() })
+         
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = colorArray.map({ $0.cgColor })
+        if isVertical {
+            //top to bottom
+            gradientLayer.locations = [0.0, 1.0]
+        } else {
+            //left to right
+            gradientLayer.startPoint = CGPoint(x: 0.2, y: 0.8)
+            gradientLayer.endPoint = CGPoint(x: 0.45, y: 0.8)
+        }
+        
+        backgroundColor = .clear
+        gradientLayer.frame = bounds
+        layer.insertSublayer(gradientLayer, at: 0)
+    }
+
 }
