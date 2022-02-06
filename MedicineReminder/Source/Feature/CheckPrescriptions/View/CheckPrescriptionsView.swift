@@ -13,6 +13,19 @@ class CheckPrescriptionsView: UIView, CheckPrescriptionsViewProtocol {
     var db:DBHelper = DBHelper()
     
     // MARK: - variables
+    
+    private lazy var descriptionText: UILabel = {
+        let variable = UILabel()
+        variable.textColor = Colors.appTheme
+        variable.font = UIFont(name: "ArialNarrow", size: Metrics.Spacing.huge)
+        variable.font = UIFont.boldSystemFont(ofSize: Metrics.Spacing.medium)
+        variable.text = "Check_Text".localized
+        variable.numberOfLines = zeroRawValue
+        variable.textAlignment = NSTextAlignment.center
+        variable.translatesAutoresizingMaskIntoConstraints = false
+        return variable
+    }()
+    
     private lazy var tableView: UITableView = {
         let table = UITableView()
         table.layer.masksToBounds = true
@@ -23,6 +36,7 @@ class CheckPrescriptionsView: UIView, CheckPrescriptionsViewProtocol {
         return table
     }()
     
+    private let zeroRawValue = 0
     // MARK: - setup
     
     init() {
@@ -36,14 +50,25 @@ class CheckPrescriptionsView: UIView, CheckPrescriptionsViewProtocol {
     // MARK: - private functions
     
     private func setupUI() {
+        addSubview(descriptionText)
         addSubview(tableView)
         prescriptions = db.read()
         tableView.reloadData()
         setupConstraints()
     }
     private func setupConstraints() {
-        tableView.bindFrameToSuperviewBounds()
         
+        tableView.topAnchor.constraint(equalTo: topAnchor, constant: Metrics.Spacing.large).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.Spacing.medium).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: descriptionText.topAnchor).isActive = true
+        
+        descriptionText.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: Metrics.Spacing.medium).isActive = true
+        descriptionText.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.Spacing.large).isActive = true
+        descriptionText.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.Spacing.large).isActive = true
+        descriptionText.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Metrics.Spacing.greatest).isActive = true
+
+
     }
     
 }

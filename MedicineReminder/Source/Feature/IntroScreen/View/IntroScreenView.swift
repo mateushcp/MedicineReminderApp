@@ -63,6 +63,23 @@ class IntroScreenView: UIView, IntroScreenViewProtocol {
         return variable
     }()
     
+    let recomendationButton: UIButton = {
+        let variable = UIButton()
+        variable.setTitle("Recomend_Text".localized, for: .normal)
+        variable.titleLabel?.font  = UIFont(name: "ArialNarrow", size: Metrics.Spacing.huge)
+        variable.titleLabel?.font = UIFont.boldSystemFont(ofSize: Metrics.Spacing.buttonTitle)
+        variable.setTitleColor(Colors.white, for: .normal)
+        variable.backgroundColor = Colors.appTheme
+        variable.layer.cornerRadius = Metrics.Spacing.small
+        variable.heightAnchor.constraint(equalToConstant: Metrics.Spacing.buttonHeight).isActive = true
+        variable.translatesAutoresizingMaskIntoConstraints = false
+        variable.addTarget(self, action: #selector(didTapRecomend), for: .touchUpInside)
+        return variable
+    }()
+    
+    @objc func didTapRecomend(){
+    }
+    
     private let zeroRawValue = 0
     
     @objc func didTapNew(){
@@ -89,6 +106,7 @@ class IntroScreenView: UIView, IntroScreenViewProtocol {
         addSubview(newPrescriptionLabel)
         addSubview(checkPrescriptionLabel)
         addSubview(detailMessage)
+        addSubview(recomendationButton)
         
         setupConstraints()
     }
@@ -102,6 +120,11 @@ class IntroScreenView: UIView, IntroScreenViewProtocol {
         
         detailMessage.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Metrics.Spacing.large).isActive = true
         detailMessage.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        
+        recomendationButton.topAnchor.constraint(equalTo: checkPrescriptionLabel.bottomAnchor, constant: Metrics.Spacing.greater).isActive = true
+        recomendationButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.Spacing.greater).isActive = true
+        recomendationButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.Spacing.greater).isActive = true
+        recomendationButton.bottomAnchor.constraint(equalTo: detailMessage.topAnchor, constant: -Metrics.Spacing.medium).isActive = true
         
     }
     

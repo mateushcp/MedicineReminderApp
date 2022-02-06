@@ -25,3 +25,6 @@
 
 // MARK: CheckPrescription Screen
 "Check_Title" = "RECEITAS CADASTRADAS";
+"Check_Text" = "Confira as receitas cadastradas.
+Você pode remover uma receita para que as notificaçoes nao sejam mais enviadas, basta clicar na receita e depois no botão deletar";
+"Recomend_Text" = "AVALIE NA LOJA";
