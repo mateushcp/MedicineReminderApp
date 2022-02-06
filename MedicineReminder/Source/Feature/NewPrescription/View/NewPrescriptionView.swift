@@ -25,19 +25,7 @@ class NewPrescriptionView: UIView, NewPrescriptionViewProtocol {
         variable.translatesAutoresizingMaskIntoConstraints = false
         return variable
     }()
-    
-    private lazy var nameText: UILabel = {
-        let variable = UILabel()
-        variable.textColor = Colors.appTheme
-        variable.font = UIFont(name: "ArialNarrow", size: Metrics.Spacing.huge)
-        variable.font = UIFont.boldSystemFont(ofSize: Metrics.Spacing.medium)
-        variable.text = "Name_Text".localized
-        variable.numberOfLines = zeroRawValue
-        variable.textAlignment = NSTextAlignment.left
-        variable.translatesAutoresizingMaskIntoConstraints = false
-        return variable
-    }()
-    
+
     private lazy var timeToTimeText: UILabel = {
         let variable = UILabel()
         variable.textColor = Colors.appTheme
@@ -150,7 +138,6 @@ class NewPrescriptionView: UIView, NewPrescriptionViewProtocol {
         addSubview(includeButton)
         
         stack.addArrangedSubview(addPrescriptionText)
-        stack.addArrangedSubview(nameText)
         stack.addArrangedSubview(nameField)
         stack.addArrangedSubview(UIView.withHeight(Metrics.Spacing.huge))
         stack.addArrangedSubview(timeToTimeText)
@@ -163,7 +150,6 @@ class NewPrescriptionView: UIView, NewPrescriptionViewProtocol {
     private func setupConstraints() {
         stack.bindFrameToSuperviewBounds()
         
-        setTexts(to: nameText)
         setTexts(to: timeToTimeText)
         
         nameField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.Spacing.large).isActive = true
