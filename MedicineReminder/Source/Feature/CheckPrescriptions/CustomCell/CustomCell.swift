@@ -50,9 +50,20 @@ class CustomCell: UITableViewCell {
     }()
     
     lazy var background: UIView = {
-        let variable = UIView(frame: CGRect(x: 8, y: 8, width: 480, height: 48))
+        let variable = UIView(frame: CGRect(x: 20, y: 20, width: 480, height: 110))
         variable.layer.masksToBounds = true
         variable.layer.cornerRadius = Metrics.Spacing.medium
+        variable.translatesAutoresizingMaskIntoConstraints = false
+        return variable
+    }()
+    
+    let deleteButton: UIButton = {
+        let variable = UIButton()
+        variable.setTitle("Delete_Button".localized, for: .normal)
+        variable.setTitleColor(Colors.red, for: .normal)
+        variable.titleLabel?.font = UIFont.boldSystemFont(ofSize: Metrics.Spacing.medium)
+        variable.translatesAutoresizingMaskIntoConstraints = false
+//        variable.addTarget(self, action: #selector(didTapRecomend), for: .touchUpInside)
         return variable
     }()
     
@@ -75,31 +86,43 @@ class CustomCell: UITableViewCell {
         
     }
     
+    func animate() {
+        UIView.animate(withDuration: 0.5, delay: 0.3, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: .curveEaseIn, animations: {
+            self.contentView.layoutIfNeeded()
+        })
+    }
+    
     private func setupUI(){
         self.backgroundColor = .clear
         addSubview(background)
-        addSubview(cellIcon)
-        addSubview(nameField)
-        addSubview(timeToTimeField)
+        background.addSubview(cellIcon)
+        background.addSubview(nameField)
+        background.addSubview(timeToTimeField)
+        background.addSubview(deleteButton)
         
         setupConstraints()
     }
     
     private func setupConstraints(){
-        
         background.bindFrameToSuperviewBounds()
-        background.applyGradient(isVertical: false, colorArray: [Colors.cellBackGround, Colors.white])
+        background.applyGradient(isVertical: true, colorArray: [Colors.cellBackGround, Colors.white])
         
         cellIcon.topAnchor.constraint(equalTo: topAnchor, constant: Metrics.Spacing.small).isActive = true
         cellIcon.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.Spacing.large).isActive = true
-        cellIcon.heightAnchor.constraint(equalToConstant: Metrics.Spacing.large).isActive = true
+        cellIcon.heightAnchor.constraint(equalToConstant: Metrics.Spacing.greater).isActive = true
         cellIcon.widthAnchor.constraint(equalToConstant: Metrics.Spacing.large).isActive = true
         
         nameField.leadingAnchor.constraint(equalTo: cellIcon.leadingAnchor, constant: Metrics.Spacing.huge).isActive = true
         nameField.topAnchor.constraint(equalTo: topAnchor, constant: Metrics.Spacing.small).isActive = true
-
+        nameField.heightAnchor.constraint(equalToConstant: Metrics.Spacing.greater).isActive = true
+        
         timeToTimeField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.Spacing.medium).isActive = true
         timeToTimeField.topAnchor.constraint(equalTo: topAnchor, constant: Metrics.Spacing.small).isActive = true
+        timeToTimeField.heightAnchor.constraint(equalToConstant: Metrics.Spacing.greater).isActive = true
+        
+        deleteButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        deleteButton.topAnchor.constraint(equalTo: nameField.topAnchor, constant: Metrics.Spacing.large).isActive = true
+        deleteButton.heightAnchor.constraint(equalToConstant: Metrics.Spacing.greatest).isActive = true
         
     }
 }
