@@ -35,6 +35,10 @@ class MedicineReminderFlowController {
 }
 
 extension MedicineReminderFlowController: IntroScreenFlowDelegate {
+    func goToCheckPrescription() {
+        self.navigationController?.pushViewController(CheckPrescriptionsViewController(), animated: true)
+    }
+    
     func goToNewPrescription() {
         let controller = viewControllerFactory.makeNewPrescriptionViewController(delegate: self)
         self.navigationController?.pushViewController(controller, animated: true)

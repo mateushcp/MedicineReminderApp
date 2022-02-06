@@ -10,6 +10,7 @@ import UIKit
 
 class IntroScreenView: UIView, IntroScreenViewProtocol {
     var didPressInclude: (() -> Void)?
+    var didPressCheck: (() -> Void)?
     // MARK: - variables
     
     private lazy var appIcon: UIImageView = {
@@ -69,6 +70,7 @@ class IntroScreenView: UIView, IntroScreenViewProtocol {
     }
     
     @objc func didTapCheck(){
+        didPressCheck?()
     }
     // MARK: - setup
     

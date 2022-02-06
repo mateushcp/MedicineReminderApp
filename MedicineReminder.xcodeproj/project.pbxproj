@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		A92EE05127AF49E700B7DD59 /* UITextField+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92EE05027AF49E700B7DD59 /* UITextField+Ext.swift */; };
+		A92EE05727AF6CC000B7DD59 /* Prescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92EE05627AF6CC000B7DD59 /* Prescription.swift */; };
+		A92EE05927AF6DA300B7DD59 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92EE05827AF6DA300B7DD59 /* DBHelper.swift */; };
+		A92EE05E27AF762600B7DD59 /* CheckPrescriptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92EE05D27AF762600B7DD59 /* CheckPrescriptionsView.swift */; };
+		A92EE06027AF77F300B7DD59 /* customCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92EE05F27AF77F300B7DD59 /* customCell.swift */; };
 		A9B17BF827ACA37000D2C838 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17BF727ACA37000D2C838 /* AppDelegate.swift */; };
 		A9B17BFE27ACA37200D2C838 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9B17BFD27ACA37200D2C838 /* Assets.xcassets */; };
 		A9B17C1127ACAACA00D2C838 /* IntroScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17C1027ACAACA00D2C838 /* IntroScreenView.swift */; };
@@ -39,6 +43,10 @@
 
 /* Begin PBXFileReference section */
 		A92EE05027AF49E700B7DD59 /* UITextField+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Ext.swift"; sourceTree = "<group>"; };
+		A92EE05627AF6CC000B7DD59 /* Prescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prescription.swift; sourceTree = "<group>"; };
+		A92EE05827AF6DA300B7DD59 /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
+		A92EE05D27AF762600B7DD59 /* CheckPrescriptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckPrescriptionsView.swift; sourceTree = "<group>"; };
+		A92EE05F27AF77F300B7DD59 /* customCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customCell.swift; sourceTree = "<group>"; };
 		A9B17BF427ACA37000D2C838 /* MedicineReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedicineReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9B17BF727ACA37000D2C838 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9B17BFD27ACA37200D2C838 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -81,6 +89,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A92EE05227AF6C2F00B7DD59 /* SQLite */ = {
+			isa = PBXGroup;
+			children = (
+				A92EE05827AF6DA300B7DD59 /* DBHelper.swift */,
+			);
+			path = SQLite;
+			sourceTree = "<group>";
+		};
+		A92EE05527AF6CB200B7DD59 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A92EE05627AF6CC000B7DD59 /* Prescription.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A92EE05A27AF75F400B7DD59 /* CheckPrescriptions */ = {
+			isa = PBXGroup;
+			children = (
+				A92EE05C27AF760D00B7DD59 /* ViewModel */,
+				A92EE05B27AF760600B7DD59 /* View */,
+			);
+			path = CheckPrescriptions;
+			sourceTree = "<group>";
+		};
+		A92EE05B27AF760600B7DD59 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A92EE05D27AF762600B7DD59 /* CheckPrescriptionsView.swift */,
+				A92EE05F27AF77F300B7DD59 /* customCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A92EE05C27AF760D00B7DD59 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		A9B17BEB27ACA37000D2C838 = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +159,8 @@
 		A9B17C0B27ACA7FF00D2C838 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				A92EE05527AF6CB200B7DD59 /* Models */,
+				A92EE05227AF6C2F00B7DD59 /* SQLite */,
 				A9B17C5027AD5D7000D2C838 /* Commons */,
 				A9B17C1E27ACB43000D2C838 /* DependencyInjection */,
 				A9B17C1227ACADEB00D2C838 /* Extensions */,
@@ -133,6 +184,7 @@
 		A9B17C0E27ACA86500D2C838 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				A92EE05A27AF75F400B7DD59 /* CheckPrescriptions */,
 				A9B17C5927ADE20900D2C838 /* NewPrescription */,
 				A9B17C0F27ACA87000D2C838 /* IntroScreen */,
 			);
@@ -307,8 +359,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9B17C1D27ACB0A600D2C838 /* IntroScreenFlowDelegate.swift in Sources */,
+				A92EE05E27AF762600B7DD59 /* CheckPrescriptionsView.swift in Sources */,
+				A92EE06027AF77F300B7DD59 /* customCell.swift in Sources */,
 				A9B17C5D27ADE23100D2C838 /* NewPrescriptionViewController.swift in Sources */,
 				A9B17C2727AD449C00D2C838 /* UIView+Ext.swift in Sources */,
+				A92EE05727AF6CC000B7DD59 /* Prescription.swift in Sources */,
 				A9B17C6327ADE27500D2C838 /* NewPrescriptionView.swift in Sources */,
 				A9B17C1B27ACAFDA00D2C838 /* IntroScreenViewControlerProtocol.swift in Sources */,
 				A9B17C6727ADE29000D2C838 /* NewPrescriptionViewModel.swift in Sources */,
@@ -319,6 +374,7 @@
 				A9B17C1127ACAACA00D2C838 /* IntroScreenView.swift in Sources */,
 				A9B17C2B27AD4D3F00D2C838 /* String+Ext.swift in Sources */,
 				A9B17C6527ADE28200D2C838 /* NewPrescriptionViewProtocol.swift in Sources */,
+				A92EE05927AF6DA300B7DD59 /* DBHelper.swift in Sources */,
 				A9B17C2F27AD54BE00D2C838 /* UIImage+ImageSources.swift in Sources */,
 				A9B17C6E27ADE54700D2C838 /* ViewModelFactoryProtocol.swift in Sources */,
 				A9B17C5627AD853D00D2C838 /* Colors.swift in Sources */,
