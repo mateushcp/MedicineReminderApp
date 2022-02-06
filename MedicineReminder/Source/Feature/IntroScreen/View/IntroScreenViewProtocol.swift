@@ -10,4 +10,6 @@ import UIKit
 
 protocol IntroScreenViewProtocol where Self: UIView {
     var didPressInclude: (() -> Void)? { get set }
+    var didPressCheck: (() -> Void)? { get set }
+
 }

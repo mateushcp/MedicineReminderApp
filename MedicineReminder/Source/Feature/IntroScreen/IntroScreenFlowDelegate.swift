@@ -10,4 +10,5 @@ import UIKit
 
 protocol IntroScreenFlowDelegate: AnyObject {
     func goToNewPrescription()
+    func goToCheckPrescription()
 }

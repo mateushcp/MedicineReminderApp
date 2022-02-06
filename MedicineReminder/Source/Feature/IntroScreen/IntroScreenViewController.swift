@@ -40,6 +40,10 @@ class IntroScreenViewController: UIViewController, IntroScreenViewControllerProt
         contentView.didPressInclude = { [weak self] in
             self?.delegate?.goToNewPrescription()
         }
+        
+        contentView.didPressCheck = { [weak self] in
+            self?.delegate?.goToCheckPrescription()
+        }
     }
     
     private func setupNavBar() {
