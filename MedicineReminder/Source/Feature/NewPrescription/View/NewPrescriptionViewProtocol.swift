@@ -9,5 +9,6 @@ import Foundation
 import UIKit
 
 protocol NewPrescriptionViewProtocol where Self: UIView {
-    
+    var didTapIncludeNew: (() -> Void)? { get set }
+    var content: ((String, String) -> Void)? { get set }
 }

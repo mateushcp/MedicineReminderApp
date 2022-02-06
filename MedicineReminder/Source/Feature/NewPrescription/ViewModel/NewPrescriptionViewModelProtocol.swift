@@ -8,5 +8,5 @@
 import Foundation
 
 protocol NewPrescriptionViewModelProtocol {
-
+    func storeData(name: String, timeToTime: String)
 }

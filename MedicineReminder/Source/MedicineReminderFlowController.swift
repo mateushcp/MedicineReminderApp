@@ -43,5 +43,8 @@ extension MedicineReminderFlowController: IntroScreenFlowDelegate {
 }
 
 extension MedicineReminderFlowController: NewPrescriptionFlowDelegate {
+    func goToHome() {
+        self.navigationController?.popViewController(animated: true)
+    }
     
 }

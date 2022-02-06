@@ -7,49 +7,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "16F91D46-D27B-4785-843C-F589FC0491F9"
+            uuid = "03AF5E69-C294-4063-A87F-E86B7FE01705"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MedicineReminder/Source/MedicineReminderFlowController.swift"
+            filePath = "MedicineReminder/Source/Feature/NewPrescription/ViewModel/NewPrescriptionViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "goToNewPrescription()"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "storeData(name:timeToTime:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "42337FB5-2509-4BE4-B502-153D2F1036E3"
+            uuid = "3B2F692C-B754-4283-BE0B-EBEF5BD3B089"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MedicineReminder/Source/MedicineReminderFlowController.swift"
+            filePath = "MedicineReminder/Source/Feature/NewPrescription/NewPrescriptionViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "goToNewPrescription()"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "bindView()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B55F1460-8E9C-45EA-B477-D96148CB4BE7"
+            uuid = "64F89025-27F0-4033-894E-686A1CE5BEF6"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MedicineReminder/Source/MedicineReminderFlowController.swift"
+            filePath = "MedicineReminder/Source/Feature/NewPrescription/ViewModel/NewPrescriptionViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "start()"
-            landmarkType = "7">
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "NewPrescriptionViewModel"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

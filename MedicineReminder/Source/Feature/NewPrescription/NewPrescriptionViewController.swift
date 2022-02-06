@@ -11,10 +11,12 @@ import UIKit
 class NewPrescriptionViewController: UIViewController, NewPrescriptionViewControllerProtocol {
     weak var delegate: NewPrescriptionFlowDelegate?
     private var contentView: NewPrescriptionViewProtocol
+    private var viewModel: NewPrescriptionViewModelProtocol
     
     init(delegate: NewPrescriptionFlowDelegate, viewModel: NewPrescriptionViewModelProtocol, contentView: NewPrescriptionViewProtocol) {
         self.contentView = contentView
         self.delegate = delegate
+        self.viewModel = viewModel
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -38,7 +40,13 @@ class NewPrescriptionViewController: UIViewController, NewPrescriptionViewContro
     }
     
     private func bindView() {
-
+        contentView.didTapIncludeNew = { [weak self] in
+            self?.delegate?.goToHome()
+        }
+        
+        contentView.content = { [weak self] name, timeToTime in
+            self?.viewModel.storeData(name: name, timeToTime: timeToTime)
+        }
     }
     
     private func setupNavBar() {

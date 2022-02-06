@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A92EE05127AF49E700B7DD59 /* UITextField+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92EE05027AF49E700B7DD59 /* UITextField+Ext.swift */; };
 		A9B17BF827ACA37000D2C838 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17BF727ACA37000D2C838 /* AppDelegate.swift */; };
 		A9B17BFE27ACA37200D2C838 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9B17BFD27ACA37200D2C838 /* Assets.xcassets */; };
 		A9B17C1127ACAACA00D2C838 /* IntroScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17C1027ACAACA00D2C838 /* IntroScreenView.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A92EE05027AF49E700B7DD59 /* UITextField+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Ext.swift"; sourceTree = "<group>"; };
 		A9B17BF427ACA37000D2C838 /* MedicineReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedicineReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9B17BF727ACA37000D2C838 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9B17BFD27ACA37200D2C838 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				A9B17C2627AD449C00D2C838 /* UIView+Ext.swift */,
 				A9B17C2A27AD4D3F00D2C838 /* String+Ext.swift */,
 				A9B17C5327AD851000D2C838 /* UIColor+Ext .swift */,
+				A92EE05027AF49E700B7DD59 /* UITextField+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				A9B17C2227ACB60A00D2C838 /* ViewControllerFactoryProtocol.swift in Sources */,
 				A9B17C1427ACAE0300D2C838 /* UIImage+Ext.swift in Sources */,
 				A9B17C5F27ADE24900D2C838 /* NewPrescriptionViewControllerProtocol.swift in Sources */,
+				A92EE05127AF49E700B7DD59 /* UITextField+Ext.swift in Sources */,
 				A9B17BF827ACA37000D2C838 /* AppDelegate.swift in Sources */,
 				A9B17C5227AD5D7A00D2C838 /* Metrics.swift in Sources */,
 				A9B17C6127ADE26400D2C838 /* NewPrescriptionFlowDelegate.swift in Sources */,
