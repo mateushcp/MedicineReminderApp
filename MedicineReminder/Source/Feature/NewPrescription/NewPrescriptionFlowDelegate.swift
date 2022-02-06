@@ -8,4 +8,5 @@
 import Foundation
 
 protocol NewPrescriptionFlowDelegate: AnyObject {
+    func goToHome()
 }

@@ -15,4 +15,10 @@
 
 // MARK: NewPrescription Screen
 "New_Title" = "NOVA RECEITA";
-"teste" = "teste";
+"Add_Text" = "Adicione sua prescrição médica, nós te lembraremos quando tomar seu medicamento";
+"Name_Text" = "Digite o nome do remédio, esse nome irá aparecer quando te enviarmos o lembrete";
+"Time_Text" = "De quanto em quanto tempo iremos te avisar?";
+"Tip_text" = "Nosso app vai te avisar qual o MedicamentoDaHora, na hora certa.";
+"Name_Holder" = "  Nome do Remédio";
+"Time_Holder" = "Selecione";
+"Include_Button" = "Adicionar";

@@ -8,5 +8,10 @@
 import Foundation
 
 class NewPrescriptionViewModel: NewPrescriptionViewModelProtocol {
+  
+    func storeData(name: String, timeToTime: String) {
+        UserDefaults.standard.set(name, forKey: "nameKey")
+        UserDefaults.standard.set(timeToTime, forKey: "timeKey")
+    }
     
 }

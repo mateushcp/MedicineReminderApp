@@ -24,8 +24,11 @@ public enum Metrics {
         public static let backgroundButtonMenu: CGFloat = 240
         public static let backgroundOpacity: CGFloat = 0.8
         public static let cornerButton: CGFloat = 0.7
-        public static let buttonHeight: CGFloat = 360
+        public static let buttonHeight: CGFloat = 48
+        public static let buttonTitle: CGFloat = 20
         
+        public static let fieldName: CGFloat = 48
+                
         public static let iconMenu: CGFloat = 400
         public static let icon: CGFloat = 24
     }
