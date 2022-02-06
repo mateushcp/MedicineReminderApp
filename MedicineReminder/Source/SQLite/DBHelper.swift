@@ -19,7 +19,7 @@ class DBHelper {
     var db:OpaquePointer?
     
     func createTable() {
-        let createTableString = "CREATE TABLE IF NOT EXISTS prescription(Id INTEGER PRIMARY KEY ,name TEXT ,timeToTime TEXT);"
+        let createTableString = "CREATE TABLE IF NOT EXISTS prescription(Id INTEGER PRIMARY KEY  AUTOINCREMENT ,name TEXT ,timeToTime TEXT);"
         var createTableStatement: OpaquePointer? = nil
         if sqlite3_prepare_v2(db, createTableString, -1, &createTableStatement, nil) == SQLITE_OK
         {
@@ -36,21 +36,13 @@ class DBHelper {
     }
     
     
-    func insert(id: Int, name: String, timeToTime: String) {
-        let prescriptions = read()
-        for p in prescriptions
-        {
-            if p.id == id
-            {
-                return
-            }
-        }
-        let insertStatementString = "INSERT INTO prescription (Id, name, timeToTime) VALUES (?, ?, ?);"
+    func insert(name: String, timeToTime: String) {
+        let insertStatementString = "INSERT INTO prescription (name, timeToTime) VALUES (?, ?);"
         var insertStatement: OpaquePointer? = nil
+      
         if sqlite3_prepare_v2(db, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
-            sqlite3_bind_int(insertStatement, 1, Int32(id))
-            sqlite3_bind_text(insertStatement, 2, (name as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(insertStatement, 3, (timeToTime as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 1, (name as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 2, (timeToTime as NSString).utf8String, -1, nil)
             
             if sqlite3_step(insertStatement) == SQLITE_DONE {
                 print("Successfully inserted row.")
@@ -78,29 +70,9 @@ class DBHelper {
             return db
         }
     }
-    
-    func read() -> [Prescription] {
-          let queryStatementString = "SELECT * FROM prescription;"
-          var queryStatement: OpaquePointer? = nil
-          var psns : [Prescription] = []
-          if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
-              while sqlite3_step(queryStatement) == SQLITE_ROW {
-                  let id = sqlite3_column_int(queryStatement, 0)
-                  let name = String(describing: String(cString: sqlite3_column_text(queryStatement, 1)))
-                  let timeToTime = String(describing: String(cString: sqlite3_column_text(queryStatement, 2)))
-                  psns.append(Prescription(name: name, timeToTime: timeToTime, id: Int(id)))
-                  print("Query Result:")
-                  print("\(id) | \(name) | \(timeToTime)")
-              }
-          } else {
-              print("SELECT statement could not be prepared")
-          }
-          sqlite3_finalize(queryStatement)
-          return psns
-      }
       
       func deleteByID(id:Int) {
-          let deleteStatementStirng = "DELETE FROM person WHERE Id = ?;"
+          let deleteStatementStirng = "DELETE FROM prescription WHERE Id = ?;"
           var deleteStatement: OpaquePointer? = nil
           if sqlite3_prepare_v2(db, deleteStatementStirng, -1, &deleteStatement, nil) == SQLITE_OK {
               sqlite3_bind_int(deleteStatement, 1, Int32(id))

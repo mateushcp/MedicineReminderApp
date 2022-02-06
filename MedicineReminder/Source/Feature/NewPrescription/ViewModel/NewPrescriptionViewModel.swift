@@ -11,13 +11,9 @@ import UIKit
 class NewPrescriptionViewModel: NewPrescriptionViewModelProtocol {
     var prescriptions:[Prescription] = []
     var db:DBHelper = DBHelper()
-
+    
     func storeData(name: String, timeToTime: String) {
-        
-        let id = Int.random(in: 0...50)
-        db.insert(id: id, name: name, timeToTime: timeToTime)
-        
-        prescriptions = db.read()
+        db.insert(name: name, timeToTime: timeToTime)
     }
-     
+    
 }
