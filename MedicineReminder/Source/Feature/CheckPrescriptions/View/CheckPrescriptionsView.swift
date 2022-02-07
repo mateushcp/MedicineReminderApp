@@ -81,6 +81,8 @@ class CheckPrescriptionsView: UIView, CheckPrescriptionsViewProtocol {
         tableView.beginUpdates()
         tableView.deleteRows(at: [IndexPath(row: indexPath.row, section: 0)], with: .left)
         tableView.endUpdates()
+        
+//        didDeleteData(selectedIndex)
     }
     
 }
@@ -100,20 +102,12 @@ extension CheckPrescriptionsView: UITableViewDelegate, UITableViewDataSource {
         }
         cell.nameField.text = "\(prescriptions[indexPath.row].name)"
         cell.timeToTimeField.text = "\(prescriptions[indexPath.row].timeToTime)"
-        
-        cell.deleteButton.addTarget(self, action: #selector(didTapDelete(_:)), for: .touchUpInside)
-        
         cell.selectionStyle = .none
         cell.animate()
-
+        cell.deleteButton.addTarget(self, action: #selector(didTapDelete(_:)), for: .touchUpInside)
+        cell.contentView.isUserInteractionEnabled = false
+        
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            prescriptions.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -121,14 +115,14 @@ extension CheckPrescriptionsView: UITableViewDelegate, UITableViewDataSource {
         tableView.beginUpdates()
         tableView.reloadRows(at: [selectedIndex], with: .none)
         tableView.endUpdates()
-        
+            
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if selectedIndex == indexPath {
             return Metrics.Spacing.expand
         }
-        return Metrics.Spacing.greater
+        return Metrics.Spacing.eighten
     }
     
 }

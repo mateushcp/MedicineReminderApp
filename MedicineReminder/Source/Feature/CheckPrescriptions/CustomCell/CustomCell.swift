@@ -50,7 +50,7 @@ class CustomCell: UITableViewCell {
     }()
     
     lazy var background: UIView = {
-        let variable = UIView(frame: CGRect(x: 20, y: 20, width: 480, height: 110))
+        let variable = UIView(frame: CGRect(x: 8, y: 20, width: 480, height: 160))
         variable.layer.masksToBounds = true
         variable.layer.cornerRadius = Metrics.Spacing.medium
         variable.translatesAutoresizingMaskIntoConstraints = false
@@ -119,8 +119,7 @@ class CustomCell: UITableViewCell {
         timeToTimeField.topAnchor.constraint(equalTo: topAnchor, constant: Metrics.Spacing.small).isActive = true
         
         deleteButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        deleteButton.topAnchor.constraint(equalTo: nameField.topAnchor, constant: Metrics.Spacing.large).isActive = true
-        deleteButton.heightAnchor.constraint(equalToConstant: Metrics.Spacing.greatest).isActive = true
+        deleteButton.topAnchor.constraint(equalTo: nameField.topAnchor, constant: Metrics.Spacing.greatest).isActive = true
         
     }
 }

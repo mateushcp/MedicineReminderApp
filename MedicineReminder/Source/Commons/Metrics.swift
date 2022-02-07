@@ -19,6 +19,7 @@ public enum Metrics {
         public static let huge: CGFloat = 32
         public static let bigger: CGFloat = 40
         public static let greater: CGFloat = 56
+        public static let eighten: CGFloat = 80
         public static let greatest: CGFloat = 100
         
         public static let backgroundButtonMenu: CGFloat = 240
@@ -29,7 +30,7 @@ public enum Metrics {
         
         public static let fieldName: CGFloat = 48
         
-        public static let expand: CGFloat = 110
+        public static let expand: CGFloat = 160
 
         public static let iconMenu: CGFloat = 400
         public static let icon: CGFloat = 24
