@@ -9,8 +9,8 @@ import Foundation
 import UIKit
 
 class CheckPrescriptionsView: UIView, CheckPrescriptionsViewProtocol {
-    var prescriptions:[Prescription] = []
-    var db:DBHelper = DBHelper()
+    var prescriptions = [Prescription]()
+    var db = DBHelper()
     
     // MARK: - variables
     
@@ -21,7 +21,7 @@ class CheckPrescriptionsView: UIView, CheckPrescriptionsViewProtocol {
         variable.font = UIFont.boldSystemFont(ofSize: Metrics.Spacing.medium)
         variable.attributedText = "Check_Text".localized.attributedStringWithColor(["Remover lembrete"], color: Colors.red)
         variable.numberOfLines = zeroRawValue
-        variable.textAlignment = NSTextAlignment.center
+        variable.textAlignment = .center
         variable.translatesAutoresizingMaskIntoConstraints = false
         return variable
     }()
@@ -37,7 +37,7 @@ class CheckPrescriptionsView: UIView, CheckPrescriptionsViewProtocol {
     }()
     
     private let zeroRawValue = 0
-    var selectedIndex: IndexPath = IndexPath(row: 0, section: 0)
+    var selectedIndex = IndexPath(row: 0, section: 0)
     
     // MARK: - setup
     
@@ -59,37 +59,31 @@ class CheckPrescriptionsView: UIView, CheckPrescriptionsViewProtocol {
         setupConstraints()
     }
     private func setupConstraints() {
-        
-        tableView.topAnchor.constraint(equalTo: topAnchor, constant: Metrics.Spacing.large).isActive = true
-        tableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.Spacing.medium).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        
-        descriptionText.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: Metrics.Spacing.medium).isActive = true
-        descriptionText.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.Spacing.large).isActive = true
-        descriptionText.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.Spacing.large).isActive = true
-        descriptionText.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Metrics.Spacing.greatest).isActive = true
-
-
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: topAnchor, constant: Metrics.Spacing.large),
+            tableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.Spacing.medium),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.Spacing.medium),
+            
+            descriptionText.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: Metrics.Spacing.medium),
+            descriptionText.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.Spacing.large),
+            descriptionText.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.Spacing.large),
+            descriptionText.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Metrics.Spacing.greatest)
+        ])
     }
-    
 }
 
 extension CheckPrescriptionsView: UITableViewDelegate, UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return prescriptions.count
+        prescriptions.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell  {
-        let identifier = "CustomCell"
-        var cell: CustomCell! = tableView.dequeueReusableCell(withIdentifier: identifier) as? CustomCell
-        if cell == nil {
-            tableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: identifier)
-            cell = tableView.dequeueReusableCell(withIdentifier: identifier) as? CustomCell
-        }
-        cell.nameField.text = "\(prescriptions[indexPath.row].name)"
-        cell.timeToTimeField.text = "\(prescriptions[indexPath.row].timeToTime)"
+        let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier, for: indexPath) as? CustomCell ?? CustomCell()
+        let prescription = prescriptions[indexPath.row]
         
+        cell.nameField.text = "\(prescription.name)"
+        cell.timeToTimeField.text = "\(prescription.timeToTime)"
         cell.selectionStyle = .none
         cell.animate()
         
@@ -101,14 +95,9 @@ extension CheckPrescriptionsView: UITableViewDelegate, UITableViewDataSource {
         tableView.beginUpdates()
         tableView.reloadRows(at: [selectedIndex], with: .none)
         tableView.endUpdates()
-        
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if selectedIndex == indexPath {
-            return Metrics.Spacing.expand
-        }
-        return Metrics.Spacing.greater
+        (selectedIndex == indexPath) ? Metrics.Spacing.expand : Metrics.Spacing.greater
     }
-    
 }
