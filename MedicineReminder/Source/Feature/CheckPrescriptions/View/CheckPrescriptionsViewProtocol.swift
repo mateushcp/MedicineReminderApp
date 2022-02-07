@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol CheckPrescriptionsViewProtocol where Self: UIView {
-    var didDeleteData: ((String) -> Void)? { get set }
+    var didDeleteData: ((Int) -> Void)? { get set }
 
 }
 

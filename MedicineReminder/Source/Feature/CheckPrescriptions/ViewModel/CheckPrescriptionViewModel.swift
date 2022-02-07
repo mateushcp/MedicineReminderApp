@@ -12,8 +12,8 @@ class CheckPrescriptionViewModel: CheckPrescriptionViewModelProtocol {
     var prescriptions:[Prescription] = []
     var db:DBHelper = DBHelper()
     
-    func deleteDataInSelectedRow(name: String) {
-        db.deleteByName(name: name)
+    func deleteDataInSelectedRow(id: Int) {
+        db.deleteByID(id: id)
     }
 
 }

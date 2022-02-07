@@ -10,7 +10,7 @@ import UIKit
 
 class CheckPrescriptionsView: UIView, CheckPrescriptionsViewProtocol {
     var prescriptions = [Prescription]()
-    var didDeleteData: ((String) -> Void)?
+    var didDeleteData: ((Int) -> Void)?
     var db = DBHelper()
     
     // MARK: - variables
@@ -33,6 +33,7 @@ class CheckPrescriptionsView: UIView, CheckPrescriptionsViewProtocol {
         table.translatesAutoresizingMaskIntoConstraints = false
         table.delegate = self
         table.dataSource = self
+        table.backgroundColor = Colors.white
         table.register(CustomCell.self, forCellReuseIdentifier: CustomCell.identifier)
         return table
     }()
@@ -63,6 +64,7 @@ class CheckPrescriptionsView: UIView, CheckPrescriptionsViewProtocol {
         
         tableView.topAnchor.constraint(equalTo: topAnchor, constant: Metrics.Spacing.large).isActive = true
         tableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.Spacing.medium).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.Spacing.medium).isActive = true
         tableView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         
         descriptionText.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: Metrics.Spacing.medium).isActive = true
@@ -82,10 +84,10 @@ class CheckPrescriptionsView: UIView, CheckPrescriptionsViewProtocol {
 
         prescriptions.remove(at: indexPath.row)
         tableView.beginUpdates()
-        tableView.deleteRows(at: [IndexPath(row: indexPath.row, section: 0)], with: .left)
+        tableView.deleteRows(at: [IndexPath(row: indexPath.row, section: 0)], with: .fade)
         tableView.endUpdates()
         
-        didDeleteData?(prescription.name)
+        didDeleteData?(prescription.id)
     }
     
 }

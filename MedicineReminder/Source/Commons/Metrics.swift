@@ -21,7 +21,8 @@ public enum Metrics {
         public static let greater: CGFloat = 56
         public static let eighten: CGFloat = 80
         public static let greatest: CGFloat = 100
-        
+        public static let superDupper: CGFloat = 120
+
         public static let backgroundButtonMenu: CGFloat = 240
         public static let backgroundOpacity: CGFloat = 0.8
         public static let cornerButton: CGFloat = 0.7

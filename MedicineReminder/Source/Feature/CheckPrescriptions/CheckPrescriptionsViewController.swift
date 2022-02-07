@@ -41,7 +41,7 @@ class CheckPrescriptionsViewController: UIViewController, CheckPrescriptionsView
     
     private func bindView() {
         contentView.didDeleteData = { [weak self] selectedRow in
-            self?.viewModel.deleteDataInSelectedRow(name: selectedRow)
+            self?.viewModel.deleteDataInSelectedRow(id: selectedRow)
         }
     }
     
