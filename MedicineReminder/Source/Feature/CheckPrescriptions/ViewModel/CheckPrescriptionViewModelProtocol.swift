@@ -8,4 +8,5 @@
 import Foundation
 
 protocol CheckPrescriptionViewModelProtocol {
+    func deleteDataInSelectedRow(name: String)
 }

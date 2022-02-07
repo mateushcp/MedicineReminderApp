@@ -40,7 +40,9 @@ class CheckPrescriptionsViewController: UIViewController, CheckPrescriptionsView
     }
     
     private func bindView() {
-
+        contentView.didDeleteData = { [weak self] selectedRow in
+            self?.viewModel.deleteDataInSelectedRow(name: selectedRow)
+        }
     }
     
     private func setupNavBar() {

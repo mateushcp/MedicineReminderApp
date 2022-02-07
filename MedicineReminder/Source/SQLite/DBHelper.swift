@@ -105,6 +105,23 @@ class DBHelper {
           }
           sqlite3_finalize(deleteStatement)
       }
+    
+    func deleteByName(name: String) {
+        let deleteStatementStirng = "DELETE FROM prescription WHERE name = ?;"
+        var deleteStatement: OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, deleteStatementStirng, -1, &deleteStatement, nil) == SQLITE_OK {
+            sqlite3_bind_text(deleteStatement, 1, (name as NSString).utf8String, -1, nil)
+            if sqlite3_step(deleteStatement) == SQLITE_DONE {
+                print("Successfully deleted row.")
+            } else {
+                print("Could not delete row.")
+            }
+        } else {
+            print("DELETE statement could not be prepared")
+        }
+        sqlite3_finalize(deleteStatement)
+    }
+
       
   }
 
