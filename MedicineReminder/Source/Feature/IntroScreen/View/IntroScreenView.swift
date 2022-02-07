@@ -77,7 +77,7 @@ class IntroScreenView: UIView, IntroScreenViewProtocol {
         return variable
     }()
     
-    @objc func didTapRecomend(){
+    @objc func didTapRecomend() {
     }
     
     private let zeroRawValue = 0

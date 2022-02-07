@@ -43,7 +43,7 @@ class CustomCell: UITableViewCell {
         variable.font = UIFont(name: "ArialNarrow", size: Metrics.Spacing.huge)
         variable.font = UIFont.boldSystemFont(ofSize: Metrics.Spacing.medium)
         variable.backgroundColor = Colors.red
-        variable.heightAnchor.constraint(equalToConstant: Metrics.Spacing.huge).isActive = true
+        variable.heightAnchor.constraint(equalToConstant: Metrics.Spacing.bigger).isActive = true
         variable.layer.masksToBounds = true
         variable.layer.cornerRadius = Metrics.Spacing.small
         return variable
@@ -63,7 +63,6 @@ class CustomCell: UITableViewCell {
         variable.setTitleColor(Colors.red, for: .normal)
         variable.titleLabel?.font = UIFont.boldSystemFont(ofSize: Metrics.Spacing.medium)
         variable.translatesAutoresizingMaskIntoConstraints = false
-//        variable.addTarget(self, action: #selector(didTapRecomend), for: .touchUpInside)
         return variable
     }()
     
@@ -118,7 +117,6 @@ class CustomCell: UITableViewCell {
         
         timeToTimeField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.Spacing.medium).isActive = true
         timeToTimeField.topAnchor.constraint(equalTo: topAnchor, constant: Metrics.Spacing.small).isActive = true
-        timeToTimeField.heightAnchor.constraint(equalToConstant: Metrics.Spacing.greater).isActive = true
         
         deleteButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         deleteButton.topAnchor.constraint(equalTo: nameField.topAnchor, constant: Metrics.Spacing.large).isActive = true

@@ -72,6 +72,17 @@ class CheckPrescriptionsView: UIView, CheckPrescriptionsViewProtocol {
 
     }
     
+    @objc func didTapDelete(_ sender: UIButton) {
+        let point = sender.convert(CGPoint.zero, to: tableView)
+        guard let indexPath = tableView.indexPathForRow(at: point) else {
+            return
+        }
+        prescriptions.remove(at: indexPath.row)
+        tableView.beginUpdates()
+        tableView.deleteRows(at: [IndexPath(row: indexPath.row, section: 0)], with: .left)
+        tableView.endUpdates()
+    }
+    
 }
 
 extension CheckPrescriptionsView: UITableViewDelegate, UITableViewDataSource {
@@ -90,10 +101,19 @@ extension CheckPrescriptionsView: UITableViewDelegate, UITableViewDataSource {
         cell.nameField.text = "\(prescriptions[indexPath.row].name)"
         cell.timeToTimeField.text = "\(prescriptions[indexPath.row].timeToTime)"
         
+        cell.deleteButton.addTarget(self, action: #selector(didTapDelete(_:)), for: .touchUpInside)
+        
         cell.selectionStyle = .none
         cell.animate()
-        
+
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            prescriptions.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
