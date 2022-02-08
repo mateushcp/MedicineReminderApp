@@ -57,13 +57,7 @@ extension MedicineReminderFlowController: NewPrescriptionFlowDelegate {
 extension MedicineReminderFlowController: CheckPrescriptionFlowDelegate {
     func goToPrescription() {
         let controller = viewControllerFactory.makeNewPrescriptionViewController(delegate: self)
-        guard let navigationController = self.navigationController else {
-            return }
-        var navigationArray = navigationController.viewControllers
-        navigationArray.remove(at: navigationArray.count - 1)
-        self.navigationController?.viewControllers = navigationArray
-        
-        self.navigationController?.pushViewController(controller, animated: false)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
 }

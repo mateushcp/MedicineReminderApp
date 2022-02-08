@@ -19,15 +19,15 @@ class DBHelper {
     var db:OpaquePointer?
     
     func createTable() {
-        let createTableString = "CREATE TABLE IF NOT EXISTS prescription(Id INTEGER PRIMARY KEY  AUTOINCREMENT ,name TEXT ,timeToTime TEXT);"
+        let createTableString = "CREATE TABLE IF NOT EXISTS prescriptions(Id INTEGER PRIMARY KEY  AUTOINCREMENT ,name TEXT ,timeToTime TEXT ,firstTime TEXT);"
         var createTableStatement: OpaquePointer? = nil
         if sqlite3_prepare_v2(db, createTableString, -1, &createTableStatement, nil) == SQLITE_OK
         {
             if sqlite3_step(createTableStatement) == SQLITE_DONE
             {
-                print("prescription table created.")
+                print("prescriptions table created.")
             } else {
-                print("prescription table could not be created.")
+                print("prescriptions table could not be created.")
             }
         } else {
             print("CREATE TABLE statement could not be prepared.")
@@ -36,13 +36,14 @@ class DBHelper {
     }
     
     
-    func insert(name: String, timeToTime: String) {
-        let insertStatementString = "INSERT INTO prescription (name, timeToTime) VALUES (?, ?);"
+    func insert(name: String, timeToTime: String, firstTime: String) {
+        let insertStatementString = "INSERT INTO prescriptions (name, timeToTime, firstTime) VALUES (?, ?, ?);"
         var insertStatement: OpaquePointer? = nil
       
         if sqlite3_prepare_v2(db, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
             sqlite3_bind_text(insertStatement, 1, (name as NSString).utf8String, -1, nil)
             sqlite3_bind_text(insertStatement, 2, (timeToTime as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 3, (firstTime as NSString).utf8String, -1, nil)
             
             if sqlite3_step(insertStatement) == SQLITE_DONE {
                 print("Successfully inserted row.")
@@ -72,7 +73,7 @@ class DBHelper {
     }
     
     func read() -> [Prescription] {
-        let queryStatementString = "SELECT * FROM prescription;"
+        let queryStatementString = "SELECT * FROM prescriptions;"
         var queryStatement: OpaquePointer? = nil
         var psns : [Prescription] = []
         if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
@@ -80,9 +81,10 @@ class DBHelper {
                 let id = sqlite3_column_int(queryStatement, 0)
                 let name = String(describing: String(cString: sqlite3_column_text(queryStatement, 1)))
                 let timeToTime = String(describing: String(cString: sqlite3_column_text(queryStatement, 2)))
-                psns.append(Prescription(name: name, timeToTime: timeToTime, id: Int(id)))
+                let firstTime = String(describing: String(cString: sqlite3_column_text(queryStatement, 3)))
+                psns.append(Prescription(name: name, timeToTime: timeToTime, id: Int(id), firstTime: firstTime))
                 print("Query Result:")
-                print("\(id) | \(name) | \(timeToTime)")
+                print("\(id) | \(name) | \(timeToTime) | \(firstTime)")
             }
         } else {
             print("SELECT statement could not be prepared")
@@ -91,7 +93,7 @@ class DBHelper {
         return psns
     }
       func deleteByID(id:Int) {
-          let deleteStatementStirng = "DELETE FROM prescription WHERE Id = ?;"
+          let deleteStatementStirng = "DELETE FROM prescriptions WHERE Id = ?;"
           var deleteStatement: OpaquePointer? = nil
           if sqlite3_prepare_v2(db, deleteStatementStirng, -1, &deleteStatement, nil) == SQLITE_OK {
               sqlite3_bind_int(deleteStatement, 1, Int32(id))
@@ -107,7 +109,7 @@ class DBHelper {
       }
     
     func deleteByName(name: String) {
-        let deleteStatementStirng = "DELETE FROM prescription WHERE name = ?;"
+        let deleteStatementStirng = "DELETE FROM prescriptions WHERE name = ?;"
         var deleteStatement: OpaquePointer? = nil
         if sqlite3_prepare_v2(db, deleteStatementStirng, -1, &deleteStatement, nil) == SQLITE_OK {
             sqlite3_bind_text(deleteStatement, 1, (name as NSString).utf8String, -1, nil)
@@ -121,7 +123,6 @@ class DBHelper {
         }
         sqlite3_finalize(deleteStatement)
     }
-
       
   }
 

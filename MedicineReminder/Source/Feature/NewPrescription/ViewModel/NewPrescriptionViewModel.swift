@@ -12,8 +12,8 @@ class NewPrescriptionViewModel: NewPrescriptionViewModelProtocol {
     var prescriptions:[Prescription] = []
     var db:DBHelper = DBHelper()
     
-    func storeData(name: String, timeToTime: String) {
-        db.insert(name: name, timeToTime: timeToTime)
+    func storeData(name: String, timeToTime: String, firstTime: String) {
+        db.insert(name: name, timeToTime: timeToTime, firstTime: firstTime)
     }
     
 }

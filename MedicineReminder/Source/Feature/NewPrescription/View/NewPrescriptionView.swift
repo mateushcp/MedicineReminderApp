@@ -11,7 +11,9 @@ import UIKit
 
 class NewPrescriptionView: UIView, NewPrescriptionViewProtocol {
     var didTapIncludeNew: (() -> Void)?
-    var content: ((String, String) -> Void)?
+    var content: ((String, String, String) -> Void)?
+    var selectedDate: Date?
+    
     // MARK: - variables
     
     private lazy var addPrescriptionText: UILabel = {
@@ -50,6 +52,18 @@ class NewPrescriptionView: UIView, NewPrescriptionViewProtocol {
         return variable
     }()
     
+    private lazy var timeFirstText: UILabel = {
+        let variable = UILabel()
+        variable.textColor = Colors.appTheme
+        variable.font = UIFont(name: "ArialNarrow", size: Metrics.Spacing.huge)
+        variable.font = UIFont.boldSystemFont(ofSize: Metrics.Spacing.medium)
+        variable.text = "First_Text".localized
+        variable.numberOfLines = zeroRawValue
+        variable.textAlignment = NSTextAlignment.left
+        variable.translatesAutoresizingMaskIntoConstraints = false
+        return variable
+    }()
+    
     private lazy var tipText: UILabel = {
         let variable = UILabel()
         variable.textColor = Colors.appTheme
@@ -72,9 +86,8 @@ class NewPrescriptionView: UIView, NewPrescriptionViewProtocol {
         variable.font = UIFont(name: "ArialNarrow", size: Metrics.Spacing.huge)
         variable.textColor = Colors.appTheme
         variable.layer.borderWidth = 0.7
-        variable.layer.cornerRadius = 4
+        variable.layer.cornerRadius = Metrics.Spacing.tiny
         variable.layer.borderColor = Colors.appTheme.cgColor
-        variable.keyboardType = .emailAddress
         variable.addPadding(padding: .left(Metrics.Spacing.small))
         variable.textAlignment = .left
         variable.translatesAutoresizingMaskIntoConstraints = false
@@ -89,15 +102,44 @@ class NewPrescriptionView: UIView, NewPrescriptionViewProtocol {
         )
         variable.textColor = Colors.appTheme
         variable.layer.borderWidth = 0.7
-        variable.heightAnchor.constraint(equalToConstant: Metrics.Spacing.greater).isActive = true
+        variable.heightAnchor.constraint(equalToConstant: Metrics.Spacing.bigger).isActive = true
         variable.widthAnchor.constraint(equalToConstant: Metrics.Spacing.superDupper).isActive = true
         variable.font = UIFont(name: "ArialNarrow", size: Metrics.Spacing.huge)
-        variable.layer.cornerRadius = 4
+        variable.layer.cornerRadius = Metrics.Spacing.tiny
         variable.layer.borderColor = Colors.appTheme.cgColor
-        variable.keyboardType = .emailAddress
         variable.textAlignment = .center
         variable.translatesAutoresizingMaskIntoConstraints = false
         variable.inputView = pickerTime
+        return variable
+    }()
+    
+    private lazy var timeFirstField: UITextField = {
+        let variable = UITextField()
+        variable.attributedPlaceholder = NSAttributedString(
+            string: "First_Holder".localized,
+            attributes: [NSAttributedString.Key.foregroundColor: Colors.placeholder]
+        )
+        variable.textColor = Colors.appTheme
+        variable.layer.borderWidth = 0.7
+        variable.heightAnchor.constraint(equalToConstant: Metrics.Spacing.bigger).isActive = true
+        variable.widthAnchor.constraint(equalToConstant: Metrics.Spacing.superDupper).isActive = true
+        variable.font = UIFont(name: "ArialNarrow", size: Metrics.Spacing.huge)
+        variable.layer.cornerRadius = Metrics.Spacing.tiny
+        variable.layer.borderColor = Colors.appTheme.cgColor
+        variable.textAlignment = .center
+        variable.inputView = pickerFirst
+        variable.translatesAutoresizingMaskIntoConstraints = false
+        return variable
+    }()
+    
+    private lazy var pickerFirst: UIDatePicker = {
+        let variable = UIDatePicker()
+        variable.datePickerMode = .time
+        variable.locale = .current
+        variable.preferredDatePickerStyle = .wheels
+        variable.locale = .current
+        variable.layer.cornerRadius = Metrics.Spacing.small
+        variable.translatesAutoresizingMaskIntoConstraints = false
         return variable
     }()
     
@@ -105,15 +147,6 @@ class NewPrescriptionView: UIView, NewPrescriptionViewProtocol {
         let variable = UIPickerView()
         variable.delegate = self
         variable.dataSource = self
-        return variable
-    }()
-    
-    private lazy var stack: UIStackView = {
-        let variable = UIStackView()
-        variable.axis = .vertical
-        variable.distribution = .fillProportionally
-        variable.translatesAutoresizingMaskIntoConstraints = false
-        
         return variable
     }()
     
@@ -137,7 +170,7 @@ class NewPrescriptionView: UIView, NewPrescriptionViewProtocol {
     
     @objc func didTapInclude(){
         didTapIncludeNew?()
-        content?(nameField.text ?? "", timeToTimeField.text ?? "")
+        content?(nameField.text ?? "", timeToTimeField.text ?? "", timeFirstField.text ?? "")
     }
     
     @objc func textFieldDidEndEditing(_ textField: UITextField) {
@@ -153,6 +186,35 @@ class NewPrescriptionView: UIView, NewPrescriptionViewProtocol {
         
     }
     
+    func setupDatePicker() {
+        timeFirstField.tintColor = UIColor.white
+        pickerFirst.datePickerMode = .time
+        let toolBar = UIToolbar()
+        toolBar.barStyle = .default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = Colors.appTheme
+        toolBar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done".localized, style: .plain, target: self, action: #selector(doneClick))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel".localized, style: .plain, target: self, action: #selector(cancelClick))
+        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        timeFirstField.inputView = pickerFirst
+        timeFirstField.inputAccessoryView = toolBar
+    }
+    
+    @objc func doneClick() {
+        timeFirstField.resignFirstResponder()
+        selectedDate = pickerFirst.date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:MM"
+        timeFirstField.text = dateFormatter.string(from: selectedDate ?? Date())
+    }
+    
+    @objc func cancelClick() {
+        timeFirstField.resignFirstResponder()
+    }
+    
     // MARK: - setup
     
     init() {
@@ -162,6 +224,9 @@ class NewPrescriptionView: UIView, NewPrescriptionViewProtocol {
         nameField.addTarget(self, action: #selector(textFieldDidEndEditing(_:)),for: UIControl.Event.editingDidEnd)
         timeToTimeField.addTarget(self, action: #selector(textFieldDidEndEditing(_:)),for: UIControl.Event.editingDidEnd)
         
+        
+        setupDatePicker()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -170,51 +235,52 @@ class NewPrescriptionView: UIView, NewPrescriptionViewProtocol {
     // MARK: - private functions
     
     private func setupUI() {
+        self.backgroundColor = Colors.white
         
         addSubview(addPrescriptionText)
         addSubview(nameText)
         addSubview(nameField)
         addSubview(timeToTimeText)
         addSubview(timeToTimeField)
+        addSubview(timeFirstText)
+        addSubview(timeFirstField)
         addSubview(tipText)
         addSubview(includeButton)
         
         setupConstraints()
+        
     }
     private func setupConstraints() {
-        
+        setTexts(to: addPrescriptionText)
+        setTexts(to: tipText)
+        setField(to: nameText, elementField: nameField, inside: nameText)
+        setField(to: timeToTimeText, elementField: timeToTimeField, inside: timeToTimeText)
+        setField(to: timeFirstText, elementField: timeFirstField, inside: timeFirstText)
+        setButton(to: includeButton)
         addPrescriptionText.topAnchor.constraint(equalTo: topAnchor, constant: Metrics.Spacing.large).isActive = true
-        addPrescriptionText.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.Spacing.large).isActive = true
-        addPrescriptionText.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.Spacing.large).isActive = true
-        
         nameText.topAnchor.constraint(equalTo: addPrescriptionText.bottomAnchor, constant: Metrics.Spacing.greater).isActive = true
-        nameText.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.Spacing.large).isActive = true
-        
-        nameField.topAnchor.constraint(equalTo: nameText.bottomAnchor, constant: Metrics.Spacing.medium).isActive = true
-        nameField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.Spacing.large).isActive = true
         nameField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.Spacing.large).isActive = true
-        
-        timeToTimeText.topAnchor.constraint(equalTo: nameField.bottomAnchor, constant: Metrics.Spacing.greater).isActive = true
-        timeToTimeText.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.Spacing.large).isActive = true
-        
-        timeToTimeField.topAnchor.constraint(equalTo: timeToTimeText.bottomAnchor, constant: Metrics.Spacing.medium).isActive = true
-        timeToTimeField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.Spacing.large).isActive = true
-        
-        
-        tipText.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.Spacing.large).isActive = true
-        tipText.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.Spacing.large).isActive = true
+        timeToTimeText.topAnchor.constraint(equalTo: nameField.bottomAnchor, constant: Metrics.Spacing.large).isActive = true
+        timeFirstText.topAnchor.constraint(equalTo: timeToTimeField.bottomAnchor, constant: Metrics.Spacing.large).isActive = true
         tipText.bottomAnchor.constraint(equalTo: includeButton.topAnchor, constant: -Metrics.Spacing.greater).isActive = true
-        
-        
-        includeButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Metrics.Spacing.large).isActive = true
-        includeButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.Spacing.large).isActive = true
-        includeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.Spacing.large).isActive = true
-        
+    }
+    
+    private func setField(to elementText: UIView, elementField: UIView, inside off: UIView) {
+        elementText.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.Spacing.large).isActive = true
+        elementField.topAnchor.constraint(equalTo: off.bottomAnchor, constant: Metrics.Spacing.medium).isActive = true
+        elementField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.Spacing.large).isActive = true
+    }
+    
+    private func setButton(to element: UIView) {
+        element.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Metrics.Spacing.large).isActive = true
+        element.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.Spacing.large).isActive = true
+        element.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.Spacing.large).isActive = true
+
     }
     
     private func setTexts(to element: UIView) {
-        element.leadingAnchor.constraint(equalTo: stack.leadingAnchor, constant: Metrics.Spacing.medium).isActive = true
-    }
+        element.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.Spacing.large).isActive = true
+        element.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.Spacing.large).isActive = true    }
     
 }
 

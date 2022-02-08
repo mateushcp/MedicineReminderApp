@@ -44,8 +44,8 @@ class NewPrescriptionViewController: UIViewController, NewPrescriptionViewContro
             self?.delegate?.goToHome()
         }
         
-        contentView.content = { [weak self] name, timeToTime in
-            self?.viewModel.storeData(name: name, timeToTime: timeToTime)
+        contentView.content = { [weak self] name, timeToTime, firstTime in
+            self?.viewModel.storeData(name: name, timeToTime: timeToTime, firstTime: firstTime)
         }
     }
     

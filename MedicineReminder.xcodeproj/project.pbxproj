@@ -160,6 +160,14 @@
 			path = CustomCell;
 			sourceTree = "<group>";
 		};
+		A93D230727B2049600201D27 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A92EE07327B0571600B7DD59 /* PaddingLabel.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		A9B17BEB27ACA37000D2C838 = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +197,7 @@
 		A9B17C0B27ACA7FF00D2C838 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				A93D230727B2049600201D27 /* Components */,
 				A92EE05527AF6CB200B7DD59 /* Models */,
 				A92EE05227AF6C2F00B7DD59 /* SQLite */,
 				A9B17C5027AD5D7000D2C838 /* Commons */,
@@ -240,7 +249,6 @@
 				A9B17C2A27AD4D3F00D2C838 /* String+Ext.swift */,
 				A9B17C5327AD851000D2C838 /* UIColor+Ext .swift */,
 				A92EE05027AF49E700B7DD59 /* UITextField+Ext.swift */,
-				A92EE07327B0571600B7DD59 /* PaddingLabel.swift */,
 				A93D230527B1E58700201D27 /* UIButton+Ext.swift */,
 			);
 			path = Extensions;

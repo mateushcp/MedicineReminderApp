@@ -20,9 +20,13 @@
 "Time_Text" = "De quanto em quanto tempo iremos te avisar?";
 "Tip_text" = "Nosso app vai te avisar qual o MedicamentoDaHora, na hora certa.";
 "Name_Text" = "Nome:";
+"First_Text" = "Hora da primeira dose:";
+"First_Holder" = "00:00";
 "Name_Holder" = "  Nome do Remédio";
 "Time_Holder" = "Selecione";
 "Include_Button" = "Adicionar";
+"Done" = "Concluído";
+"Cancel" = "Cancelar";
 
 // MARK: CheckPrescription Screen
 "Check_Title" = "RECEITAS CADASTRADAS";
