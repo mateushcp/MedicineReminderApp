@@ -35,4 +35,8 @@ extension UIImage{
         return setRenderingIcon(image: UIImage(named: "backButton") ?? #imageLiteral(resourceName: "backButton"))
     }
     
+    class var addNew: UIImage{
+        return setRenderingIcon(image: UIImage(named: "addNew") ?? #imageLiteral(resourceName: "backButton"))
+    }
+    
 }

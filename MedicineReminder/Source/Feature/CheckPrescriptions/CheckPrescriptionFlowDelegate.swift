@@ -11,5 +11,5 @@ import Foundation
 import UIKit
 
 protocol CheckPrescriptionFlowDelegate: AnyObject {
-
+    func goToPrescription()
 }

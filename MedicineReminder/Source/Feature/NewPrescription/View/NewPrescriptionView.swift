@@ -68,7 +68,7 @@ class NewPrescriptionView: UIView, NewPrescriptionViewProtocol {
             string: "Name_Holder".localized,
             attributes: [NSAttributedString.Key.foregroundColor: Colors.placeholder]
         )
-        variable.heightAnchor.constraint(equalToConstant: Metrics.Spacing.huge).isActive = true
+        variable.heightAnchor.constraint(equalToConstant: Metrics.Spacing.bigger).isActive = true
         variable.font = UIFont(name: "ArialNarrow", size: Metrics.Spacing.huge)
         variable.textColor = Colors.appTheme
         variable.layer.borderWidth = 0.7
@@ -123,10 +123,11 @@ class NewPrescriptionView: UIView, NewPrescriptionViewProtocol {
         variable.titleLabel?.font  = UIFont(name: "ArialNarrow", size: Metrics.Spacing.huge)
         variable.titleLabel?.font = UIFont.boldSystemFont(ofSize: Metrics.Spacing.buttonTitle)
         variable.setTitleColor(Colors.white, for: .normal)
-        variable.backgroundColor = Colors.appTheme
+        variable.backgroundColor = Colors.cellBackGround
         variable.layer.cornerRadius = Metrics.Spacing.small
         variable.heightAnchor.constraint(equalToConstant: Metrics.Spacing.buttonHeight).isActive = true
         variable.translatesAutoresizingMaskIntoConstraints = false
+        variable.isEnabled = false
         variable.addTarget(self, action: #selector(didTapInclude), for: .touchUpInside)
         return variable
     }()
@@ -139,11 +140,27 @@ class NewPrescriptionView: UIView, NewPrescriptionViewProtocol {
         content?(nameField.text ?? "", timeToTimeField.text ?? "")
     }
     
+    @objc func textFieldDidEndEditing(_ textField: UITextField) {
+        self.buttonIsEnabled()
+    }
+    
+    func buttonIsEnabled() {
+        
+        if nameField.text != "" && timeToTimeField.text != "" {
+            includeButton.isEnabled = true
+            includeButton.backgroundColor = Colors.appTheme
+        }
+        
+    }
+    
     // MARK: - setup
     
     init() {
         super.init(frame: .zero)
         setupUI()
+        
+        nameField.addTarget(self, action: #selector(textFieldDidEndEditing(_:)),for: UIControl.Event.editingDidEnd)
+        timeToTimeField.addTarget(self, action: #selector(textFieldDidEndEditing(_:)),for: UIControl.Event.editingDidEnd)
         
     }
     
@@ -173,21 +190,21 @@ class NewPrescriptionView: UIView, NewPrescriptionViewProtocol {
         nameText.topAnchor.constraint(equalTo: addPrescriptionText.bottomAnchor, constant: Metrics.Spacing.greater).isActive = true
         nameText.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.Spacing.large).isActive = true
         
-        nameField.topAnchor.constraint(equalTo: nameText.bottomAnchor, constant: Metrics.Spacing.small).isActive = true
+        nameField.topAnchor.constraint(equalTo: nameText.bottomAnchor, constant: Metrics.Spacing.medium).isActive = true
         nameField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.Spacing.large).isActive = true
         nameField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.Spacing.large).isActive = true
         
         timeToTimeText.topAnchor.constraint(equalTo: nameField.bottomAnchor, constant: Metrics.Spacing.greater).isActive = true
         timeToTimeText.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.Spacing.large).isActive = true
         
-        timeToTimeField.topAnchor.constraint(equalTo: timeToTimeText.bottomAnchor, constant: Metrics.Spacing.small).isActive = true
+        timeToTimeField.topAnchor.constraint(equalTo: timeToTimeText.bottomAnchor, constant: Metrics.Spacing.medium).isActive = true
         timeToTimeField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.Spacing.large).isActive = true
-
+        
         
         tipText.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.Spacing.large).isActive = true
         tipText.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.Spacing.large).isActive = true
         tipText.bottomAnchor.constraint(equalTo: includeButton.topAnchor, constant: -Metrics.Spacing.greater).isActive = true
-
+        
         
         includeButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Metrics.Spacing.large).isActive = true
         includeButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.Spacing.large).isActive = true

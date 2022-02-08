@@ -65,14 +65,13 @@ class CheckPrescriptionsView: UIView, CheckPrescriptionsViewProtocol {
         tableView.topAnchor.constraint(equalTo: topAnchor, constant: Metrics.Spacing.large).isActive = true
         tableView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.Spacing.medium).isActive = true
         tableView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.Spacing.medium).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         
         descriptionText.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: Metrics.Spacing.medium).isActive = true
         descriptionText.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.Spacing.large).isActive = true
         descriptionText.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.Spacing.large).isActive = true
         descriptionText.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Metrics.Spacing.greatest).isActive = true
-
-
+        
+        
     }
     
     @objc func didTapDelete(_ sender: UIButton) {
@@ -81,7 +80,7 @@ class CheckPrescriptionsView: UIView, CheckPrescriptionsViewProtocol {
             return
         }
         let prescription = prescriptions[indexPath.row]
-
+        
         prescriptions.remove(at: indexPath.row)
         tableView.beginUpdates()
         tableView.deleteRows(at: [IndexPath(row: indexPath.row, section: 0)], with: .fade)
@@ -100,9 +99,9 @@ extension CheckPrescriptionsView: UITableViewDelegate, UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell  {
         let cell = tableView.dequeueReusableCell(withIdentifier: CustomCell.identifier, for: indexPath) as? CustomCell ?? CustomCell()
-             let prescription = prescriptions[indexPath.row]
-
-             cell.nameField.text = "\(prescription.name)"
+        let prescription = prescriptions[indexPath.row]
+        
+        cell.nameField.text = "\(prescription.name)"
         cell.timeToTimeField.text = "\(prescription.timeToTime)"
         cell.selectionStyle = .none
         cell.animate()
@@ -117,7 +116,7 @@ extension CheckPrescriptionsView: UITableViewDelegate, UITableViewDataSource {
         tableView.beginUpdates()
         tableView.reloadRows(at: [selectedIndex], with: .none)
         tableView.endUpdates()
-            
+        
     }
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) ->

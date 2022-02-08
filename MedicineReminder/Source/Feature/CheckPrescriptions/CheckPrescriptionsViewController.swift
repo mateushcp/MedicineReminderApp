@@ -21,6 +21,10 @@ class CheckPrescriptionsViewController: UIViewController, CheckPrescriptionsView
         super.init(nibName: nil, bundle: nil)
     }
     
+    @objc func didTapAd(){
+        self.delegate?.goToPrescription()
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -36,7 +40,8 @@ class CheckPrescriptionsViewController: UIViewController, CheckPrescriptionsView
         setupController()
         
         bindView()
-                
+        let add = UIBarButtonItem(image: UIImage.addNew, style: .plain, target: self, action: #selector(didTapAd))
+        self.navigationItem.rightBarButtonItem  = add
     }
     
     private func bindView() {
@@ -56,6 +61,7 @@ class CheckPrescriptionsViewController: UIViewController, CheckPrescriptionsView
         self.navigationController?.navigationBar.tintColor = Colors.appTheme
         self.navigationController?.navigationBar.backItem?.title = ""
         self.title = "Check_Title".localized
+
     }
     
     private func setupController() {
