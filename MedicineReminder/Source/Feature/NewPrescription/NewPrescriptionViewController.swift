@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import UserNotifications
 
 class NewPrescriptionViewController: UIViewController, NewPrescriptionViewControllerProtocol {
     weak var delegate: NewPrescriptionFlowDelegate?
@@ -34,7 +35,6 @@ class NewPrescriptionViewController: UIViewController, NewPrescriptionViewContro
     override func viewDidLoad() {
         super.viewDidLoad()
         setupController()
-        
         bindView()
                 
     }
@@ -47,6 +47,11 @@ class NewPrescriptionViewController: UIViewController, NewPrescriptionViewContro
         contentView.content = { [weak self] name, timeToTime, firstTime in
             self?.viewModel.storeData(name: name, timeToTime: timeToTime, firstTime: firstTime)
         }
+        contentView.content = { [weak self] name, timeToTime, firstTime in
+            self?.viewModel.notifications(name: name, timeToTime: timeToTime, firstTime: firstTime)
+            self?.viewModel.handleToInt(time: timeToTime)
+        }
+        
     }
     
     private func setupNavBar() {
