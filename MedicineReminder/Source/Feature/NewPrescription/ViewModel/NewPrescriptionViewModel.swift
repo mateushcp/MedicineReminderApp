@@ -51,14 +51,15 @@ class NewPrescriptionViewModel: NewPrescriptionViewModelProtocol {
         content.body = "Lembre que você deve ingerir este remédio de \(timeToTime)"
         content.sound = UNNotificationSound.default
         
-        let timeInterval = handleToInt(time: timeToTime)
-        let date = Date().addingTimeInterval(timeInterval)
-        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        let timeInterval = handleToInt(time: timeToTime) // * 3600
+        let trigger = UNTimeIntervalNotificationTrigger(
+            timeInterval: 60.0,
+            repeats: true)
         
-        let request = UNNotificationRequest(identifier: "random", content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: "identifier", content: content, trigger: trigger)
         
         center.add(request)
     }
-    
+
+    //atual + selecionado usar first time como identifiers
 }

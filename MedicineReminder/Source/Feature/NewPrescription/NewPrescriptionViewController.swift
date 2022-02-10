@@ -46,8 +46,6 @@ class NewPrescriptionViewController: UIViewController, NewPrescriptionViewContro
         
         contentView.content = { [weak self] name, timeToTime, firstTime in
             self?.viewModel.storeData(name: name, timeToTime: timeToTime, firstTime: firstTime)
-        }
-        contentView.content = { [weak self] name, timeToTime, firstTime in
             self?.viewModel.notifications(name: name, timeToTime: timeToTime, firstTime: firstTime)
             self?.viewModel.handleToInt(time: timeToTime)
         }
