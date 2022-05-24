@@ -39,4 +39,11 @@ extension UIImage{
         return setRenderingIcon(image: UIImage(named: "addNew") ?? #imageLiteral(resourceName: "backButton"))
     }
     
+    class var markedCheckbox: UIImage{
+        return setRenderingIcon(image: UIImage(named: "check-box") ?? #imageLiteral(resourceName: "check-box"))
+    }
+    
+    class var unmarkedCheckbox: UIImage{
+        return setRenderingIcon(image: UIImage(named: "blank-check-box") ?? #imageLiteral(resourceName: "blank-check-box"))
+    }
 }

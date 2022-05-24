@@ -11,7 +11,7 @@ import UIKit
 
 class NewPrescriptionView: UIView, NewPrescriptionViewProtocol {
     var didTapIncludeNew: (() -> Void)?
-    var content: ((String, String, String) -> Void)?
+    var content: ((String, String, String, Bool) -> Void)?
     var selectedDate: Date?
     
     // MARK: - variables
@@ -36,6 +36,19 @@ class NewPrescriptionView: UIView, NewPrescriptionViewProtocol {
         variable.text = "Name_Text".localized
         variable.numberOfLines = zeroRawValue
         variable.textAlignment = NSTextAlignment.left
+        variable.translatesAutoresizingMaskIntoConstraints = false
+        return variable
+    }()
+    
+    private lazy var takeNow: UILabel = {
+        let variable = UILabel()
+        variable.textColor = Colors.appTheme
+        variable.font = UIFont(name: "ArialNarrow", size: Metrics.Spacing.huge)
+        variable.font = UIFont.boldSystemFont(ofSize: Metrics.Spacing.medium)
+        variable.text = "Taked_Text".localized
+        variable.numberOfLines = zeroRawValue
+        variable.lineBreakMode = .byWordWrapping
+        variable.textAlignment = .left
         variable.translatesAutoresizingMaskIntoConstraints = false
         return variable
     }()
@@ -119,7 +132,7 @@ class NewPrescriptionView: UIView, NewPrescriptionViewProtocol {
             string: "First_Holder".localized,
             attributes: [NSAttributedString.Key.foregroundColor: Colors.placeholder]
         )
-        variable.textColor = Colors.appTheme
+        variable.textColor = Colors.disabledField
         variable.layer.borderWidth = 0.7
         variable.heightAnchor.constraint(equalToConstant: Metrics.Spacing.bigger).isActive = true
         variable.widthAnchor.constraint(equalToConstant: Metrics.Spacing.superDupper).isActive = true
@@ -165,12 +178,34 @@ class NewPrescriptionView: UIView, NewPrescriptionViewProtocol {
         return variable
     }()
     
+    private let checkBoxButton: UIButton = {
+        let variable = UIButton()
+        variable.isSelected = false
+        variable.setImage(UIImage.unmarkedCheckbox, for: .normal)
+        variable.addTarget(self, action: #selector(didTapCheckbox), for: .touchUpInside)
+        variable.widthAnchor.constraint(equalToConstant: 64).isActive = true
+        variable.translatesAutoresizingMaskIntoConstraints = false
+        variable.tintColor = Colors.appTheme
+        return variable
+    }()
+    
     private let timeToTime = ["2 em 2 horas","4 em 4 horas","6 em 6 horas","8 em 8 horas", "12 em 12 horas"]
     private let zeroRawValue = 0
     
+    @objc func didTapCheckbox() {
+        checkBoxButton.setImage(UIImage.markedCheckbox, for: .normal)
+        timeFirstField.isEnabled = false
+        timeFirstText.textColor = Colors.disabledField
+        timeFirstField.textColor = Colors.disabledField
+        timeFirstField.layer.borderColor = Colors.disabledField.cgColor
+   }
+    
     @objc func didTapInclude(){
         didTapIncludeNew?()
-        content?(nameField.text ?? "", timeToTimeField.text ?? "", timeFirstField.text ?? "")
+        if timeFirstField.text == "" {
+            timeFirstField.text = "00:00"
+        }
+        content?(nameField.text ?? "", timeToTimeField.text ?? "", timeFirstField.text ?? "00:00", checkBoxButton.isSelected)
     }
     
     @objc func textFieldDidEndEditing(_ textField: UITextField) {
@@ -185,7 +220,7 @@ class NewPrescriptionView: UIView, NewPrescriptionViewProtocol {
         }
         
     }
-    
+
     func setupDatePicker() {
         timeFirstField.tintColor = UIColor.white
         pickerFirst.datePickerMode = .time
@@ -243,6 +278,8 @@ class NewPrescriptionView: UIView, NewPrescriptionViewProtocol {
         addSubview(timeToTimeText)
         addSubview(timeToTimeField)
         addSubview(timeFirstText)
+        addSubview(takeNow)
+        addSubview(checkBoxButton)
         addSubview(timeFirstField)
         addSubview(tipText)
         addSubview(includeButton)
@@ -257,11 +294,22 @@ class NewPrescriptionView: UIView, NewPrescriptionViewProtocol {
         setField(to: timeToTimeText, elementField: timeToTimeField, inside: timeToTimeText)
         setField(to: timeFirstText, elementField: timeFirstField, inside: timeFirstText)
         setButton(to: includeButton)
+        
         addPrescriptionText.topAnchor.constraint(equalTo: topAnchor, constant: Metrics.Spacing.large).isActive = true
         nameText.topAnchor.constraint(equalTo: addPrescriptionText.bottomAnchor, constant: Metrics.Spacing.greater).isActive = true
         nameField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.Spacing.large).isActive = true
+        
         timeToTimeText.topAnchor.constraint(equalTo: nameField.bottomAnchor, constant: Metrics.Spacing.large).isActive = true
         timeFirstText.topAnchor.constraint(equalTo: timeToTimeField.bottomAnchor, constant: Metrics.Spacing.large).isActive = true
+        timeFirstField.trailingAnchor.constraint(equalTo: checkBoxButton.leadingAnchor, constant: -Metrics.Spacing.eighten).isActive = true
+        
+        takeNow.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Metrics.Spacing.small).isActive = true
+        takeNow.leadingAnchor.constraint(equalTo: checkBoxButton.trailingAnchor, constant: Metrics.Spacing.small).isActive = true
+        takeNow.topAnchor.constraint(equalTo: checkBoxButton.topAnchor, constant: Metrics.Spacing.small).isActive = true
+        
+        checkBoxButton.leadingAnchor.constraint(equalTo: timeFirstText.trailingAnchor, constant: Metrics.Spacing.tiny).isActive = true
+        checkBoxButton.topAnchor.constraint(equalTo: timeFirstField.topAnchor, constant: -Metrics.Spacing.smallIsh).isActive = true
+        
         tipText.bottomAnchor.constraint(equalTo: includeButton.topAnchor, constant: -Metrics.Spacing.greater).isActive = true
     }
     
@@ -275,7 +323,7 @@ class NewPrescriptionView: UIView, NewPrescriptionViewProtocol {
         element.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Metrics.Spacing.large).isActive = true
         element.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Metrics.Spacing.large).isActive = true
         element.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Metrics.Spacing.large).isActive = true
-
+        
     }
     
     private func setTexts(to element: UIView) {

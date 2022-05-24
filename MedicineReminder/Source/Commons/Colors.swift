@@ -16,5 +16,6 @@ public enum Colors {
     public static let white = UIColor(red: 255, green: 255, blue: 255)
     public static let cellBackGround = UIColor(red: 245, green: 240, blue: 240)
     public static let cellBackGround2 = UIColor(red: 214, green: 245, blue: 245)
+    public static let disabledField = UIColor(red: 154, green: 152, blue: 155)
     
 }

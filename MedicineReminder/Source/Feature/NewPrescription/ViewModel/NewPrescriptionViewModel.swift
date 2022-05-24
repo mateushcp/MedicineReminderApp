@@ -27,9 +27,9 @@ class NewPrescriptionViewModel: NewPrescriptionViewModelProtocol {
             case "6 em 6 horas":
                 timeToTime = "6"
             case "8 em 8 horas":
-                timeToTime = "8"
+                timeToTime = "70"
             case "12 em 12 horas":
-                timeToTime = "4"
+                timeToTime = "60"
             default:
                 timeToTime = "8"
             }
@@ -43,20 +43,65 @@ class NewPrescriptionViewModel: NewPrescriptionViewModelProtocol {
             return Double(myInt)
         }
     
+    func returnHourFirst(time: String) -> Double {
+        let hoursAndMinutes = time.components(separatedBy: ":")
+        let myTime = hoursAndMinutes[0]
+        return Double(myTime) ?? Double()
+    }
+    
+    func returnMinuteFirst(time: String) -> Double {
+        let hoursAndMinutes = time.components(separatedBy: ":")
+        let myTime = hoursAndMinutes[1]
+        return Double(myTime) ?? Double()
+    }
+    
+    func getTimeForNotification(string: String) -> Double {
+        let formatedString = string.digits
+        let hourStripped = String(formatedString.dropLast(2))
+        let minuteStripped = String(formatedString.dropFirst(2))
+        let doubleHour = Double(hourStripped)!
+        let doubleMinute = Double(minuteStripped)!
+        let hoursTime = (doubleHour * 3600) + ( doubleMinute * 60)
+        return hoursTime
+    }
+    
     func notifications(name: String, timeToTime: String, firstTime: String) {
         let center = UNUserNotificationCenter.current()
+        getTimeForNotification(string: firstTime)
 
         let content = UNMutableNotificationContent()
         content.title = "Chegou a hora de tomar \(name)"
         content.body = "Lembre que você deve ingerir este remédio de \(timeToTime)"
         content.sound = UNNotificationSound.default
+        let hoursFromFirst = returnHourFirst(time: firstTime)
+        let minutesFromFirst = returnMinuteFirst(time: firstTime)
+        let hourDate = Calendar.current.component(.hour, from: Date())
+
+//        let timeInterval = handleToInt(time: timeToTime) // * 3600
+        let timeInterval = ((handleToInt(time: timeToTime) * 3600) - ( Double(hourDate) - (hoursFromFirst * 3600 + minutesFromFirst * 60)))
         
-        let timeInterval = handleToInt(time: timeToTime) // * 3600
         let trigger = UNTimeIntervalNotificationTrigger(
-            timeInterval: 60.0,
+            timeInterval: timeInterval,
             repeats: true)
+//        db.createNotificationsTable()
+//        db.insertNotificationsTable(name: firstTime, timeToTime: getTimeForNotification(string: firstTime))
+        //primeiro alarme fixo vai ser definido aqui
+        //case horario == horarioatual: request = timeToTime(8em8) * 3600
+        //case horario < horarioatual: request = ((horarioAtual - firstTime) + TimeToTime(8em8h)) * 3600
+        // final = 8tempoemtempo - (19atual - 17primeiro)
+        // 8 - 2 = 6 horas
+        // finalDepois = 8
+        //case horario > horarioatual: request = ((horario - horarioAtual) + timeToTime) * 3600
         
-        let request = UNNotificationRequest(identifier: "identifier", content: content, trigger: trigger)
+//        DispatchQueue.global(qos: .background).async {
+////            self.db.readNotifications()
+//            //deletar notificaçao anterior
+//            //inserir nova notificaçao com base no banco para daqui 8 em 8, por ex
+//            let request = UNNotificationRequest(identifier: firstTime, content: content, trigger: trigger)
+//        }
+        
+        let requestFirstAlarm = ""
+        let request = UNNotificationRequest(identifier: name, content: content, trigger: trigger)
         
         center.add(request)
     }

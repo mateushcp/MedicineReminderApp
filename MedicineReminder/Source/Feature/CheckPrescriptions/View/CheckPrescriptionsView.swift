@@ -10,7 +10,7 @@ import UIKit
 
 class CheckPrescriptionsView: UIView, CheckPrescriptionsViewProtocol {
     var prescriptions = [Prescription]()
-    var didDeleteData: ((Int) -> Void)?
+    var didDeleteData: ((Int, String) -> Void)?
     var db = DBHelper()
     
     // MARK: - variables
@@ -86,7 +86,7 @@ class CheckPrescriptionsView: UIView, CheckPrescriptionsViewProtocol {
         tableView.deleteRows(at: [IndexPath(row: indexPath.row, section: 0)], with: .fade)
         tableView.endUpdates()
         
-        didDeleteData?(prescription.id)
+        didDeleteData?(prescription.id, prescription.name)
     }
     
 }

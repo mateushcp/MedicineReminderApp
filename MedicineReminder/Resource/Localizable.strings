@@ -27,6 +27,7 @@
 "Include_Button" = "Adicionar";
 "Done" = "Concluído";
 "Cancel" = "Cancelar";
+"Taked_Text" = "Vou tomar o remédio agora";
 
 // MARK: CheckPrescription Screen
 "Check_Title" = "RECEITAS CADASTRADAS";

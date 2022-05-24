@@ -35,6 +35,42 @@ class DBHelper {
         sqlite3_finalize(createTableStatement)
     }
     
+    func createNotificationsTable() {
+        let createTableString = "CREATE TABLE IF NOT EXISTS notifications(Id INTEGER PRIMARY KEY  AUTOINCREMENT ,name TEXT ,timeToTime DOUBLE);"
+        var createTableStatement: OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, createTableString, -1, &createTableStatement, nil) == SQLITE_OK
+        {
+            if sqlite3_step(createTableStatement) == SQLITE_DONE
+            {
+                print("NotificationsTable table created.")
+            } else {
+                print("NotificationsTable table could not be created.")
+            }
+        } else {
+            print("CREATE TABLE statement could not be prepared.")
+        }
+        sqlite3_finalize(createTableStatement)
+    }
+    
+    func insertNotificationsTable(name: String, timeToTime: Double) {
+        let insertStatementString = "INSERT INTO notifications (name, timeToTime) VALUES (?, ?);"
+        var insertStatement: OpaquePointer? = nil
+      
+        if sqlite3_prepare_v2(db, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
+            sqlite3_bind_text(insertStatement, 1, (name as NSString).utf8String, -1, nil)
+            sqlite3_bind_double(insertStatement, 2, timeToTime)
+            
+            if sqlite3_step(insertStatement) == SQLITE_DONE {
+                print("Successfully inserted row in notifications.")
+            } else {
+                print("Could not insert row.")
+            }
+        } else {
+            print("INSERT statement could not be prepared.")
+        }
+        sqlite3_finalize(insertStatement)
+    }
+    
     
     func insert(name: String, timeToTime: String, firstTime: String) {
         let insertStatementString = "INSERT INTO prescriptions (name, timeToTime, firstTime) VALUES (?, ?, ?);"
@@ -70,6 +106,27 @@ class DBHelper {
             print("Successfully opened connection to database at \(dbPath)")
             return db
         }
+    }
+    
+    func readNotifications() -> [Prescription] {
+        let queryStatementString = "SELECT * FROM notifications;"
+        var queryStatement: OpaquePointer? = nil
+        var psns : [Prescription] = []
+        if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
+            while sqlite3_step(queryStatement) == SQLITE_ROW {
+                let id = sqlite3_column_int(queryStatement, 0)
+                let name = String(describing: String(cString: sqlite3_column_text(queryStatement, 1)))
+                let timeToTime = String(describing: String(cString: sqlite3_column_text(queryStatement, 2)))
+                let firstTime = String(describing: String(cString: sqlite3_column_text(queryStatement, 3)))
+                psns.append(Prescription(name: name, timeToTime: timeToTime, id: Int(id), firstTime: firstTime))
+                print("Query Result:")
+                print("\(id) | \(name) | \(timeToTime) | \(firstTime)")
+            }
+        } else {
+            print("SELECT statement could not be prepared notifications")
+        }
+        sqlite3_finalize(queryStatement)
+        return psns
     }
     
     func read() -> [Prescription] {

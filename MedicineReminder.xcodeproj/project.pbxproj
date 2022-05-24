@@ -20,6 +20,7 @@
 		A92EE07027B01D4A00B7DD59 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92EE06F27B01D4A00B7DD59 /* CustomCell.swift */; };
 		A92EE07427B0571600B7DD59 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92EE07327B0571600B7DD59 /* PaddingLabel.swift */; };
 		A93D230627B1E58700201D27 /* UIButton+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93D230527B1E58700201D27 /* UIButton+Ext.swift */; };
+		A94DF3D027B5F56400928A2E /* Strings+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94DF3CF27B5F56400928A2E /* Strings+Ext.swift */; };
 		A9B17BF827ACA37000D2C838 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17BF727ACA37000D2C838 /* AppDelegate.swift */; };
 		A9B17BFE27ACA37200D2C838 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9B17BFD27ACA37200D2C838 /* Assets.xcassets */; };
 		A9B17C1127ACAACA00D2C838 /* IntroScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B17C1027ACAACA00D2C838 /* IntroScreenView.swift */; };
@@ -63,7 +64,8 @@
 		A92EE06F27B01D4A00B7DD59 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		A92EE07327B0571600B7DD59 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		A93D230527B1E58700201D27 /* UIButton+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Ext.swift"; sourceTree = "<group>"; };
-		A9B17BF427ACA37000D2C838 /* Remédio daHora.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Remédio daHora.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A94DF3CF27B5F56400928A2E /* Strings+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Strings+Ext.swift"; sourceTree = "<group>"; };
+		A9B17BF427ACA37000D2C838 /* daHora.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = daHora.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9B17BF727ACA37000D2C838 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9B17BFD27ACA37200D2C838 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A9B17C0527ACA37200D2C838 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -179,7 +181,7 @@
 		A9B17BF527ACA37000D2C838 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A9B17BF427ACA37000D2C838 /* Remédio daHora.app */,
+				A9B17BF427ACA37000D2C838 /* daHora.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -250,6 +252,7 @@
 				A9B17C5327AD851000D2C838 /* UIColor+Ext .swift */,
 				A92EE05027AF49E700B7DD59 /* UITextField+Ext.swift */,
 				A93D230527B1E58700201D27 /* UIButton+Ext.swift */,
+				A94DF3CF27B5F56400928A2E /* Strings+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -332,9 +335,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A9B17BF327ACA37000D2C838 /* Remédio daHora */ = {
+		A9B17BF327ACA37000D2C838 /* daHora */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A9B17C0827ACA37200D2C838 /* Build configuration list for PBXNativeTarget "Remédio daHora" */;
+			buildConfigurationList = A9B17C0827ACA37200D2C838 /* Build configuration list for PBXNativeTarget "daHora" */;
 			buildPhases = (
 				A9B17BF027ACA37000D2C838 /* Sources */,
 				A9B17BF127ACA37000D2C838 /* Frameworks */,
@@ -344,9 +347,9 @@
 			);
 			dependencies = (
 			);
-			name = "Remédio daHora";
+			name = daHora;
 			productName = MedicineReminder;
-			productReference = A9B17BF427ACA37000D2C838 /* Remédio daHora.app */;
+			productReference = A9B17BF427ACA37000D2C838 /* daHora.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -376,7 +379,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A9B17BF327ACA37000D2C838 /* Remédio daHora */,
+				A9B17BF327ACA37000D2C838 /* daHora */,
 			);
 		};
 /* End PBXProject section */
@@ -405,6 +408,7 @@
 				A9B17C2727AD449C00D2C838 /* UIView+Ext.swift in Sources */,
 				A92EE05727AF6CC000B7DD59 /* Prescription.swift in Sources */,
 				A9B17C6327ADE27500D2C838 /* NewPrescriptionView.swift in Sources */,
+				A94DF3D027B5F56400928A2E /* Strings+Ext.swift in Sources */,
 				A9B17C1B27ACAFDA00D2C838 /* IntroScreenViewControlerProtocol.swift in Sources */,
 				A9B17C6727ADE29000D2C838 /* NewPrescriptionViewModel.swift in Sources */,
 				A9B17C1627ACAE8A00D2C838 /* IntroScreenViewProtocol.swift in Sources */,
@@ -572,7 +576,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Abidu.MedicineReminder;
-				PRODUCT_NAME = "Remédio daHora";
+				PRODUCT_NAME = daHora;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -592,7 +596,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Abidu.MedicineReminder;
-				PRODUCT_NAME = "Remédio daHora";
+				PRODUCT_NAME = daHora;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -610,7 +614,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A9B17C0827ACA37200D2C838 /* Build configuration list for PBXNativeTarget "Remédio daHora" */ = {
+		A9B17C0827ACA37200D2C838 /* Build configuration list for PBXNativeTarget "daHora" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A9B17C0927ACA37200D2C838 /* Debug */,

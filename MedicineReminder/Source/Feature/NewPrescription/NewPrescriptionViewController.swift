@@ -44,10 +44,9 @@ class NewPrescriptionViewController: UIViewController, NewPrescriptionViewContro
             self?.delegate?.goToHome()
         }
         
-        contentView.content = { [weak self] name, timeToTime, firstTime in
+        contentView.content = { [weak self] name, timeToTime, firstTime, isChecked in
             self?.viewModel.storeData(name: name, timeToTime: timeToTime, firstTime: firstTime)
             self?.viewModel.notifications(name: name, timeToTime: timeToTime, firstTime: firstTime)
-            self?.viewModel.handleToInt(time: timeToTime)
         }
         
     }

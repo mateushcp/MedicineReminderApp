@@ -21,7 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(urls[urls.count-1] as URL)
         
         let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in }
+        center.requestAuthorization(options: [.alert, .sound]) { granted, error in
+            print(granted)
+            if let error = error {
+                print(error)
+            }}
         
         return true
     }
