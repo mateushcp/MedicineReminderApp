@@ -180,10 +180,9 @@ class NewPrescriptionView: UIView, NewPrescriptionViewProtocol {
     
     private let checkBoxButton: UIButton = {
         let variable = UIButton()
-        variable.isSelected = false
         variable.setImage(UIImage.unmarkedCheckbox, for: .normal)
         variable.addTarget(self, action: #selector(didTapCheckbox), for: .touchUpInside)
-        variable.widthAnchor.constraint(equalToConstant: 64).isActive = true
+        variable.widthAnchor.constraint(equalToConstant: Metrics.Spacing.checkboxHeight).isActive = true
         variable.translatesAutoresizingMaskIntoConstraints = false
         variable.tintColor = Colors.appTheme
         return variable
@@ -191,14 +190,11 @@ class NewPrescriptionView: UIView, NewPrescriptionViewProtocol {
     
     private let timeToTime = ["2 em 2 horas","4 em 4 horas","6 em 6 horas","8 em 8 horas", "12 em 12 horas"]
     private let zeroRawValue = 0
+    private var checked: Bool = false
     
     @objc func didTapCheckbox() {
-        checkBoxButton.setImage(UIImage.markedCheckbox, for: .normal)
-        timeFirstField.isEnabled = false
-        timeFirstText.textColor = Colors.disabledField
-        timeFirstField.textColor = Colors.disabledField
-        timeFirstField.layer.borderColor = Colors.disabledField.cgColor
-   }
+        checked ? unmarkCheckbox() : markCheckbox()
+    }
     
     @objc func didTapInclude(){
         didTapIncludeNew?()
@@ -219,6 +215,24 @@ class NewPrescriptionView: UIView, NewPrescriptionViewProtocol {
             includeButton.backgroundColor = Colors.appTheme
         }
         
+    }
+    
+    func unmarkCheckbox() {
+        checkBoxButton.setImage(UIImage.unmarkedCheckbox, for: .normal)
+        timeFirstField.isEnabled = true
+        timeFirstText.textColor = Colors.appTheme
+        timeFirstField.textColor = Colors.appTheme
+        timeFirstField.layer.borderColor = Colors.appTheme.cgColor
+        checked = false
+    }
+    
+    func markCheckbox() {
+        checkBoxButton.setImage(UIImage.markedCheckbox, for: .normal)
+        timeFirstField.isEnabled = false
+        timeFirstText.textColor = Colors.disabledField
+        timeFirstField.textColor = Colors.disabledField
+        timeFirstField.layer.borderColor = Colors.disabledField.cgColor
+        checked = true
     }
 
     func setupDatePicker() {

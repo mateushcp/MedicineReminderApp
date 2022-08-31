@@ -36,5 +36,8 @@ public enum Metrics {
 
         public static let iconMenu: CGFloat = 400
         public static let icon: CGFloat = 24
+        
+        public static let checkboxHeight: CGFloat = 64
+
     }
 }
