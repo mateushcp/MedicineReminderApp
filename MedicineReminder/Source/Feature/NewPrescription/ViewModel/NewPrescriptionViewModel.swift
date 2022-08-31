@@ -65,23 +65,33 @@ class NewPrescriptionViewModel: NewPrescriptionViewModelProtocol {
         return hoursTime
     }
     
-    func notifications(name: String, timeToTime: String, firstTime: String) {
+    func handleTimeInterval(firstTime: String, timeToTime: String, checked: Bool) -> Double {
+        var timeInterval: Double = 00.00
+        let hoursFromFirst = returnHourFirst(time: firstTime)
+        let minutesFromFirst = returnMinuteFirst(time: firstTime)
+        let hourDate = Calendar.current.component(.hour, from: Date())
+        if checked {
+            timeInterval =  handleToInt(time: timeToTime) * 3600
+        } else {
+          //TODO: implementar regra para enviar caso selecione horario
+        }
+        
+        return timeInterval
+    }
+    
+    func notifications(name: String, timeToTime: String, firstTime: String, checked: Bool) {
         let center = UNUserNotificationCenter.current()
-        getTimeForNotification(string: firstTime)
-
+//        getTimeForNotification(string: firstTime)
         let content = UNMutableNotificationContent()
         content.title = "Chegou a hora de tomar \(name)"
         content.body = "Lembre que você deve ingerir este remédio de \(timeToTime)"
         content.sound = UNNotificationSound.default
-        let hoursFromFirst = returnHourFirst(time: firstTime)
-        let minutesFromFirst = returnMinuteFirst(time: firstTime)
-        let hourDate = Calendar.current.component(.hour, from: Date())
-
+    
 //        let timeInterval = handleToInt(time: timeToTime) // * 3600
-        let timeInterval = ((handleToInt(time: timeToTime) * 3600) - ( Double(hourDate) - (hoursFromFirst * 3600 + minutesFromFirst * 60)))
+      
         
         let trigger = UNTimeIntervalNotificationTrigger(
-            timeInterval: timeInterval,
+            timeInterval: handleTimeInterval(firstTime: firstTime, timeToTime: timeToTime, checked: checked),
             repeats: true)
 //        db.createNotificationsTable()
 //        db.insertNotificationsTable(name: firstTime, timeToTime: getTimeForNotification(string: firstTime))

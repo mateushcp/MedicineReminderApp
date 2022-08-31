@@ -201,7 +201,7 @@ class NewPrescriptionView: UIView, NewPrescriptionViewProtocol {
         if timeFirstField.text == "" {
             timeFirstField.text = "00:00"
         }
-        content?(nameField.text ?? "", timeToTimeField.text ?? "", timeFirstField.text ?? "00:00", checkBoxButton.isSelected)
+        content?(nameField.text ?? "", timeToTimeField.text ?? "", timeFirstField.text ?? "00:00", checked)
     }
     
     @objc func textFieldDidEndEditing(_ textField: UITextField) {

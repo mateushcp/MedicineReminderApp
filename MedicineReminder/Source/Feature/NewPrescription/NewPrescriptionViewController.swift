@@ -40,13 +40,13 @@ class NewPrescriptionViewController: UIViewController, NewPrescriptionViewContro
     }
     
     private func bindView() {
-        contentView.didTapIncludeNew = { [weak self] in
+        contentView.didTapIncludeNew = { [weak self] in 
             self?.delegate?.goToHome()
         }
         
-        contentView.content = { [weak self] name, timeToTime, firstTime, isChecked in
+        contentView.content = { [weak self] name, timeToTime, firstTime, checked in
             self?.viewModel.storeData(name: name, timeToTime: timeToTime, firstTime: firstTime)
-            self?.viewModel.notifications(name: name, timeToTime: timeToTime, firstTime: firstTime)
+            self?.viewModel.notifications(name: name, timeToTime: timeToTime, firstTime: firstTime, checked: checked)
         }
         
     }

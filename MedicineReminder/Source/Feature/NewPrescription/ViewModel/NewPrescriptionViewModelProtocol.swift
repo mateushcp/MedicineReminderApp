@@ -9,6 +9,6 @@ import Foundation
 
 protocol NewPrescriptionViewModelProtocol {
     func storeData(name: String, timeToTime: String, firstTime: String)
-    func notifications(name: String, timeToTime: String, firstTime: String)
+    func notifications(name: String, timeToTime: String, firstTime: String, checked: Bool)
     func handleToInt(time: String) -> Double
 }
